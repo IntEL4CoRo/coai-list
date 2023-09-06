@@ -6,7 +6,7 @@
     "link": "https://coai-jrc.de/",
     "src_url": "https://github.com/IntEL4CoRo/COAI",
     "open_ease": "https://data.open-ease.org/",
-    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI.git/master?urlpath=notebook%2F",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI.git/master?urlpath=notebooks%2F",
     "asset_url": "https://coai-jrc.de/virtual-building/",
     "created_time": 1693905934063,
     "environment": [
@@ -72,7 +72,7 @@
     "description": "Robot Agents that master household chores.",
     "link": "https://cram-system.org/",
     "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebook/household.ipynb",
-    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI.git/master?urlpath=notebook%2F",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI.git/master?urlpath=notebooks%2F",
     "open_ease": "https://data.open-ease.org/",
     "asset_url": "https://ease-crc.org/",
     "author": "artnie",
@@ -97,7 +97,7 @@
     "description": "Robot Agents that assist in laboratories.",
     "link": "https://cram-system.org/",
     "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebook/apartment.ipynb",
-    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI.git/master?urlpath=notebook%2F",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI.git/master?urlpath=notebooks%2F",
     "open_ease": "https://data.open-ease.org/",
     "asset_url": "https://ease-crc.org/",
     "environment": [
@@ -116,7 +116,7 @@
     "description": "Robot Agents that work in a retail store.",
     "link": "https://cram-system.org/",
     "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebook/retail.ipynb",
-    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI.git/master?urlpath=notebook%2F",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI.git/master?urlpath=notebooks%2F",
     "open_ease": "https://data.open-ease.org/",
     "asset_url": "https://ease-crc.org/",
     "environment": [
