@@ -1,0 +1,13 @@
+version: '3'
+services:
+  demo-page-dev:
+    image: 'node:latest'
+    stdin_open: true
+    tty: true
+    user: root
+    command: /bin/bash
+    working_dir: /home/node/dev
+    ports:
+      - 18080:8080
+    volumes:
+      - .:/home/node/dev:rw
