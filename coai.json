@@ -9,33 +9,62 @@
     "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
     "asset_url": "https://coai-jrc.de/virtual-building/",
     "created_time": 1693905934063,
-    "environment": [
-      {
-        "name": "household",
-        "robot": [
-          "pr2",
-          "tiago",
-          "donbot"
-        ],
-        "task": [
-          "setting_table",
-          "assembling"
-        ]
-      },
-      {
-        "name": "apartment",
-        "robot": [
-          "pr2",
-          "tiago"
-        ]
-      },
-      {
-        "name": "retail",
-        "robot": [
-          "pr2",
-          "donbot"
-        ]
-      }
+    "options": {
+      "environments": [
+        {
+          "name": "Apartment",
+          "value": "apartment",
+          "img": ""
+        },
+        {
+          "name": "Household",
+          "value": "household",
+          "img": ""
+        },
+        {
+          "name": "Retail",
+          "value": "retail",
+          "img": ""
+        }
+      ],
+      "robots": [
+        {
+          "name": "PR2",
+          "value": "pr2",
+          "img": "images/pr2_urdf_white1.png"
+        },
+        {
+          "name": "Tiago",
+          "value": "tiago",
+          "img": "images/tiago_urdf_white1.png"
+        },
+        {
+          "name": "PR2",
+          "value": "pr2",
+          "img": "donbot_urdf_white1.png"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Setting table",
+          "value": "setting_table"
+        },
+                {
+          "name": "Assembly",
+          "value": "assembly"
+        }
+      ]
+    },
+    "notebooks": [
+      "apartment_tiago.ipynb",
+      "apartment_pr2.ipynb",
+      "household_donbot_assembly.ipynb",
+      "household_donbot_setting_table.ipynb",
+      "household_pr2_assembly.ipynb",
+      "household_pr2_setting_table.ipynb",
+      "household_tiago_setting_table.ipynb",
+      "retail_donbot.ipynb",
+      "retail_pr2.ipynb"
     ]
   },
   {

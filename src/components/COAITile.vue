@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
+import Dropdown from 'primevue/dropdown';
 
 const props = defineProps({
   item: {
@@ -12,39 +13,84 @@ const props = defineProps({
   }
 })
 
-let selectedEnv = props.item.environment.length !== 0
-  ? ref(props.item.environment[0].name)
-  : undefined
+let selectedEnv = ref(props.item.options.environments.length !== 0
+  ? props.item.options.environments[0]
+  : {})
 
-let selectedRob = props.item.environment.length !== 0 && props.item.environment[0].robot.length !== 0
-  ? ref(props.item.environment[0].robot[0])
-  : undefined
+let selectedRob = ref(props.item.options.robots.length !== 0
+  ? props.item.options.robots[0]
+  : {})
 
-let selectedTask = props.item.environment.length !== 0 && props.item.environment[0].task.length !== 0
-  ? ref(props.item.environment[0].task[0])
-  : undefined
+let selectedTask = ref(props.item.options.tasks.length !== 0
+  ? props.item.options.tasks[0]
+  : {})
 
-const envObj = computed(() => {
-  let newVal = props.item.environment.length !== 0
-    ? props.item.environment.find(e => e.name === selectedEnv.value)
-    : undefined
-  if (selectedRob && !~newVal.robot.indexOf(selectedRob.value)) {
-    selectedRob.value = newVal.robot[0]
-  }
-  if (selectedTask && !~newVal.task.indexOf(selectedTask.value)) {
-    selectedTask.value = newVal.task[0]
-  }
-  return newVal
+const envOpts = computed(() => {
+  return props.item.options.environments
 })
 
+const robOpts = computed(() => {
+  if (hasNoOptions()) return props.item.options.robots
+  let _selectedEnv = selectedEnv.value
+  let _filterNotebooks = props.item.notebooks.filter(v => !!~v.indexOf(_selectedEnv.value))
+  let filteredList = props.item.options.robots.filter(v => {
+    for (let i of _filterNotebooks) {
+      if (!!~i.indexOf(v.value)) return true
+    }
+    return false
+  })
+  if (!~filteredList.indexOf(selectedRob.value)) {
+    selectedRob.value = filteredList[0]
+  }
+  return filteredList
+})
+
+const taskOpts = computed(() => {
+  if (hasNoOptions()) return props.item.options.tasks
+  if (!props.item.options.tasks) return []
+  let _selectedEnv = selectedEnv.value
+  let _selectedRob = selectedRob.value
+  let _filterNotebooks = props.item.notebooks.filter(v => !!~v.indexOf(_selectedEnv.value) && !!~v.indexOf(_selectedRob.value))
+  let filteredList = props.item.options.tasks.filter(v => {
+    for (let i of _filterNotebooks) {
+      if (!!~i.indexOf(v.value)) return true
+    }
+    return false
+  })
+  console.log(filteredList)
+
+  if (!~filteredList.indexOf(selectedTask.value)) {
+    selectedTask.value = filteredList[0]
+  }
+  return filteredList
+})
+
+function hasNoOptions () {
+  let optsLength = props.item.options.environments.length
+    + props.item.options.robots.length
+    + props.item.options.tasks.length
+  return optsLength === 0 || /\.ipynb$/.test(props.item.run_url)
+}
+
 const composedRunUrl = computed(() => {
-  if (props.item.environment.length === 0 || /\.ipynb$/.test(props.item.run_url)) {
+  if (hasNoOptions()) {
     return props.item.run_url
   }
-  let env = selectedEnv && selectedEnv.value ? `${selectedEnv.value}` : ''
-  let rob = selectedRob && selectedRob.value ? `_${selectedRob.value}` : ''
-  let task = selectedTask && selectedTask.value ? `_${selectedTask.value}` : ''
-  return `${props.item.run_url}${env}${rob}${task}.ipynb`
+  return `${props.item.run_url}${targetNotebook.value}`
+})
+
+const composedSrcUrl = computed(() => {
+  if (hasNoOptions()) {
+    return props.item.src_url
+  }
+  return `${props.item.src_url}${targetNotebook.value}`
+})
+
+const targetNotebook = computed(() => {
+  let env = selectedEnv && selectedEnv.value ? `${selectedEnv.value.value}` : ''
+  let rob = selectedRob && selectedRob.value ? `_${selectedRob.value.value}` : ''
+  let task = selectedTask && selectedTask.value ? `_${selectedTask.value.value}` : ''
+  return `${env}${rob}${task}.ipynb`
 })
 
 function runCode(event) {
@@ -67,38 +113,76 @@ function runCode(event) {
           </h5>
           <p class="card-text">{{ item.description }}</p>
           <div class="row">
-            <div class="env-select" v-if="item.environment && !!item.environment.length">
-              <div class="form-floating mb-3" v-if="item.environment.length !== 0">
-                <select class="form-select text-capitalize" aria-label="Environment"
-                  :disabled="item.environment.length === 1" :id="'environmentSelect' + index" v-model="selectedEnv">
-                  <option class="text-capitalize" v-for="env in item.environment" :value="env.name"
-                    :selected="item.environment.name === selectedEnv">{{ env.name }}</option>
-                </select>
-                <label :for="'environmentSelect' + index">Selected Environment</label>
-              </div>
-              <div class="form-floating mb-3" v-if="envObj && envObj.robot.length !== 0">
-                <select class="form-select text-capitalize" :id="'robotSelect' + index" aria-label="Robot"
-                :disabled="envObj.robot.length === 1" v-model="selectedRob">
-                  <option class="text-capitalize" v-for="rob in envObj.robot" :value="rob"
-                    :selected="selectedRob === rob">{{ rob }}</option>
-                </select>
-                <label :for="'robotSelect' + index">Selected Robot</label>
-              </div>
-              <div class="form-floating mb-3" v-if="envObj && envObj.task.length !== 0">
-                <select class="form-select text-capitalize" :id="'taskSelect' + index" aria-label="Task"
-                :disabled="envObj.task.length === 1" v-model="selectedTask">
-                  <option class="text-capitalize" v-for="task in envObj.task" :value="task"
-                    :selected="selectedTask === task">{{ task }}</option>
-                </select>
-                <label :for="'taskSelect' + index">Selected Task</label>
-              </div>
+            <div class="options-select row">
+              
+              <Dropdown v-if="envOpts.length !== 0" :options="envOpts"
+                v-model="selectedEnv" optionLabel="name" placeholder="Select an environment" class="col-md-5 mb-3">
+                <template #value="slotProps">
+                  <div v-if="slotProps.value" class="flex h-100 align-items-center">
+                    <img v-if="slotProps.value.img" class="selected-img" :alt="slotProps.value.name"
+                      :src="slotProps.value.img" />
+                    <div>{{ slotProps.value.name }}</div>
+                  </div>
+                  <span v-else>
+                    {{ slotProps.placeholder }}
+                  </span>
+                </template>
+                <template #option="slotProps">
+                  <div class="flex align-items-center">
+                    <img v-if="slotProps.option.img" class="option-img" :alt="slotProps.option.name"
+                      :src="slotProps.option.img" />
+                    <div>{{ slotProps.option.name }}</div>
+                  </div>
+                </template>
+              </Dropdown>
+              <Dropdown v-if="robOpts.length !== 0" :options="robOpts" v-model="selectedRob"
+                optionLabel="name" placeholder="Select an robot" class="col-md-5 mb-3">
+                <template #value="slotProps">
+                  <div v-if="slotProps.value" class="flex h-100 align-items-center">
+                    <img v-if="slotProps.value.img" class="selected-img" :alt="slotProps.value.name"
+                      :src="slotProps.value.img" />
+                    <div>{{ slotProps.value.name }}</div>
+                  </div>
+                  <span v-else>
+                    {{ slotProps.placeholder }}
+                  </span>
+                </template>
+                <template #option="slotProps">
+                  <div class="flex align-items-center">
+                    <img v-if="slotProps.option.img" class="option-img" :alt="slotProps.option.name"
+                      :src="slotProps.option.img" />
+                    <div>{{ slotProps.option.name }}</div>
+                  </div>
+                </template>
+              </Dropdown>
+              <Dropdown v-if="taskOpts.length !== 0" :options="taskOpts" v-model="selectedTask"
+                optionLabel="name" placeholder="Select an task" class="col-md-5 mb-3">
+                <template #value="slotProps">
+                  <div v-if="slotProps.value" class="flex h-100 align-items-center">
+                    <img v-if="slotProps.value.img" class="selected-img" :alt="slotProps.value.name"
+                      :src="slotProps.value.img" />
+                    <div>{{ slotProps.value.name }}</div>
+                  </div>
+                  <span v-else>
+                    {{ slotProps.placeholder }}
+                  </span>
+                </template>
+                <template #option="slotProps">
+                  <div class="flex align-items-center">
+                    <img v-if="slotProps.option.img" class="option-img" :alt="slotProps.option.name"
+                      :src="slotProps.option.img" />
+                    <div>{{ slotProps.option.name }}</div>
+                  </div>
+                </template>
+              </Dropdown>
             </div>
             <div class="card-buttons">
-              <a v-if="composedRunUrl" :href="composedRunUrl" @click.prevent="runCode($event)" class="btn btn-primary">Run
+              <a :href="composedRunUrl" @click.prevent="runCode($event)" class="btn btn-primary">Run
                 Code</a>
               <a :class="{ disabled: !item.open_ease }" :href="item.open_ease" target="_blank"
                 class="btn btn-secondary">Experimental Data</a>
-              <a :class="{ disabled: !item.src_url }" :href="item.src_url" target="_blank" class="btn btn-secondary">Source
+              <a :class="{ disabled: !item.src_url }" :href="composedSrcUrl" target="_blank"
+                class="btn btn-secondary">Source
                 Code</a>
               <a :class="{ disabled: !item.asset_url }" :href="item.asset_url" target="_blank"
                 class="btn btn-secondary">Assets</a>
@@ -129,10 +213,6 @@ function runCode(event) {
   width: 48%;
 }
 
-/* .openease {
-  margin-left: 1rem;
-} */
-
 .card-img {
   height: 100%;
   min-height: 150px;
@@ -151,4 +231,17 @@ function runCode(event) {
 
 .card-footer span {
   font-style: italic;
-}</style>
+}
+
+.p-dropdown {
+  margin-right: 1rem;
+}
+
+.selected-img,
+.option-img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  margin-right: 1rem;
+}
+</style>

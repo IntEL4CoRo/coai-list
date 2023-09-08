@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "curl -o public/coai.json https://iris.informatik.uni-bremen.de/data/coai.json && vite --port 8080 --host=0.0.0.0",
+    "dev": ". ./.env && curl -o src/coai.json ${COAIURL} && vite --port 8080 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.5.0",
+    "primeflex": "^3.3.1",
+    "primevue": "^3.34.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {

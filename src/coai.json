@@ -1,0 +1,245 @@
+[
+  {
+    "title": "Researcher's workbench",
+    "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/picking_up_actions.png",
+    "description": "CRAM(Cognitive Robot Abstract Machine) Workbench.",
+    "link": "https://coai-jrc.de/",
+    "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/",
+    "open_ease": "https://data.open-ease.org/",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
+    "asset_url": "https://coai-jrc.de/virtual-building/",
+    "created_time": 1693905934063,
+    "options": {
+      "environments": [
+        {
+          "name": "Household",
+          "value": "household",
+          "img": "images/household.png"
+        },
+        {
+          "name": "Apartment",
+          "value": "apartment",
+          "img": "images/apartment.png"
+        },
+        {
+          "name": "Retail",
+          "value": "retail",
+          "img": "images/retail.png"
+        }
+      ],
+      "robots": [
+        {
+          "name": "PR2",
+          "value": "pr2",
+          "img": "images/pr2_urdf_white1.png"
+        },
+        {
+          "name": "Tiago",
+          "value": "tiago",
+          "img": "images/tiago_urdf_white1.png"
+        },
+        {
+          "name": "Donbot",
+          "value": "donbot",
+          "img": "images/donbot_urdf_white1.png"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Setting table",
+          "value": "setting_table"
+        },
+        {
+          "name": "Assembly",
+          "value": "assembly"
+        }
+      ]
+    },
+    "notebooks": [
+      "apartment_tiago.ipynb",
+      "apartment_pr2.ipynb",
+      "household_donbot_assembly.ipynb",
+      "household_donbot_setting_table.ipynb",
+      "household_pr2_assembly.ipynb",
+      "household_pr2_setting_table.ipynb",
+      "household_tiago_setting_table.ipynb",
+      "retail_donbot.ipynb",
+      "retail_pr2.ipynb"
+    ]
+  },
+  {
+    "title": "RoboKudo",
+    "cover_img": "https://robokudo.ai.uni-bremen.de/_images/rk_logo_v3-1000px.png",
+    "description": "Robot Perception Framework.",
+    "link": "https://robokudo.ai.uni-bremen.de/index.html#",
+    "src_url": "https://gitlab.informatik.uni-bremen.de/robokudo/robokudo",
+    "run_url": "https://binder.intel4coro.de/v2/git/https%3A%2F%2Fgitlab.informatik.uni-bremen.de%2Fyanxiang%2Frobokudo.git/binderhub",
+    "open_ease": "",
+    "asset_url": ""
+  },
+  {
+    "title": "PyCRAM",
+    "cover_img": "https://github.com/cram2/pycram/raw/dev/doc/images/pycram_logo.png",
+    "description": "PyCRAM is a toolbox for designing, implementing and deploying software on autonomous robots.",
+    "link": "https://robokudo.ai.uni-bremen.de/index.html#",
+    "src_url": "https://github.com/cram2/pycram",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/pycram/binder?urlpath=lab%2Ftree%2Fsrc%2Fpycram%2Fbinder%2Faction_designator.ipynb",
+    "open_ease": "",
+    "asset_url": ""
+  },
+  {
+    "title": "euROBIN Demo",
+    "cover_img": "https://iris.informatik.uni-bremen.de/images/eurobin.png",
+    "description": "TIAGo robot in the IAI Bremen apartment laboratory.",
+    "link": "https://www.eurobin-project.eu/",
+    "src_url": "https://github.com/IntEL4CoRo/cram_teaching/blob/main/binder/eurobin-demo.ipynb",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/main?urlpath=lab%2Ftree%2Fbinder%2Feurobin-demo.ipynb",
+    "open_ease": "",
+    "asset_url": "https://ease-crc.org/",
+    "options": {
+      "environments": [
+        {
+          "name": "IAI Apartment",
+          "value": "apartment",
+          "img": "images/apartment.png"
+        }
+      ],
+      "robots": [
+        {
+          "name": "Tiago",
+          "value": "tiago",
+          "img": "images/tiago_urdf_white1.png"
+        }
+      ]
+    }
+  },
+  {
+    "title": "Household Environment",
+    "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/picking_up_actions.png",
+    "description": "Robot Agents that master household chores.",
+    "link": "https://cram-system.org/",
+    "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
+    "open_ease": "https://data.open-ease.org/",
+    "asset_url": "https://ease-crc.org/",
+    "author": "artnie",
+    "created_time": 1683995706000,
+    "options": {
+      "environments": [
+        {
+          "name": "Household",
+          "value": "household",
+          "img": "images/household.png"
+        }
+      ],
+      "robots": [
+        {
+          "name": "PR2",
+          "value": "pr2",
+          "img": "images/pr2_urdf_white1.png"
+        },
+        {
+          "name": "Tiago",
+          "value": "tiago",
+          "img": "images/tiago_urdf_white1.png"
+        },
+        {
+          "name": "Donbot",
+          "value": "donbot",
+          "img": "images/donbot_urdf_white1.png"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Setting table",
+          "value": "setting_table"
+        }
+      ]
+    },
+    "notebooks": [
+      "household_donbot_setting_table.ipynb",
+      "household_pr2_setting_table.ipynb",
+      "household_tiago_setting_table.ipynb"
+    ]
+  },
+  {
+    "title": "Laboratories Environment",
+    "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/medical_lab.png",
+    "description": "Robot Agents that assist in laboratories.",
+    "link": "https://cram-system.org/",
+    "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
+    "open_ease": "https://data.open-ease.org/",
+    "asset_url": "https://ease-crc.org/",
+    "options": {
+      "environments": [
+        {
+          "name": "Apartment",
+          "value": "apartment",
+          "img": "images/apartment.png"
+        }
+      ],
+      "robots": [
+        {
+          "name": "PR2",
+          "value": "pr2",
+          "img": "images/pr2_urdf_white1.png"
+        },
+        {
+          "name": "Tiago",
+          "value": "tiago",
+          "img": "images/tiago_urdf_white1.png"
+        }
+      ]
+    },
+    "notebooks": [
+      "apartment_tiago.ipynb",
+      "apartment_pr2.ipynb"
+    ]
+  },
+  {
+    "title": "Retail Environment",
+    "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/store_mapping.png",
+    "description": "Robot Agents that work in a retail store.",
+    "link": "https://cram-system.org/",
+    "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
+    "open_ease": "https://data.open-ease.org/",
+    "asset_url": "https://ease-crc.org/",
+    "options": {
+      "environments": [
+        {
+          "name": "Retail",
+          "value": "retail",
+          "img": "images/retail.png"
+        }
+      ],
+      "robots": [
+        {
+          "name": "PR2",
+          "value": "pr2",
+          "img": "images/pr2_urdf_white1.png"
+        },
+        {
+          "name": "Donbot",
+          "value": "donbot",
+          "img": "images/donbot_urdf_white1.png"
+        }
+      ]
+    },
+    "notebooks": [
+      "retail_donbot.ipynb",
+      "retail_pr2.ipynb"
+    ]
+  },
+  {
+    "title": "Making Popcorn",
+    "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/popcorn_making.png",
+    "description": "PR2 making popcorn in the kitchen environment.",
+    "link": "https://cram-system.org/",
+    "src_url": "https://github.com/IntEL4CoRo/cram_teaching/blob/researcher/lectures/demos/popcorn.ipynb",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/researcher?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Fpopcorn.ipynb",
+    "open_ease": "https://data.open-ease.org/",
+    "asset_url": ""
+  }
+]

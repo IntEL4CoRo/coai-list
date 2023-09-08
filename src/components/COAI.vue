@@ -1,15 +1,14 @@
 <script setup>
 import COAITile from './COAITile.vue'
-import offlineList from '../../public/coai.json'
+import offlineList from '../coai.json'
 import { ref } from 'vue'
 import axios from 'axios'
 
 let coaiList = ref([])
-let jsonUrl = 'https://iris.informatik.uni-bremen.de/data/coai.json'
-
-if (import.meta.env.DEV) {
-  jsonUrl = 'coai.json'
-}
+let jsonUrl = import.meta.env.COAIURL
+// if (import.meta.env.DEV) {
+//   jsonUrl = 'coai.json'
+// }
 
 function randomDate() {
   const start = 1683995706000
@@ -31,17 +30,26 @@ function dataValidate(data) {
       asset_url: '',
       author: 'unknown',
       created_time: randomDate(),
-      environment: [],
+      options: {},
+      notebooks: [],
       ...e
     }
-    _obj.environment = _obj.environment.map(env => {
-      return {
-        name: '',
-        robot: [],
-        task: [],
-        ...env
-      }
-    })
+    _obj.options = {
+      environments: [],
+      robots: [],
+      tasks: [],
+      ..._obj.options
+    }
+    for (let opt in _obj.options) {
+      _obj.options[opt] = _obj.options[opt].map(env => {
+        return {
+          name: '',
+          value: '',
+          img: '',
+          ...env
+        }
+      })
+    }
     return _obj
   })
 }
@@ -49,7 +57,7 @@ function dataValidate(data) {
 axios.get(jsonUrl).then(response => {
   coaiList.value = dataValidate(response.data)
 }).catch(err => {
-  console.log(err)
+  console.log('Can not fetch remote json. Use local dev json')
   coaiList.value = dataValidate(offlineList)
 })
 
