@@ -57,8 +57,6 @@ const taskOpts = computed(() => {
     }
     return false
   })
-  console.log(filteredList)
-
   if (!~filteredList.indexOf(selectedTask.value)) {
     selectedTask.value = filteredList[0]
   }
