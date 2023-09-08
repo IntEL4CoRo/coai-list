@@ -5,10 +5,8 @@ import { ref } from 'vue'
 import axios from 'axios'
 
 let coaiList = ref([])
-let jsonUrl = import.meta.env.COAIURL
-// if (import.meta.env.DEV) {
-//   jsonUrl = 'coai.json'
-// }
+// let jsonUrl = import.meta.env.COAIURL
+let jsonUrl = "https://moodle.intel4coro.de/pluginfile.php/223/mod_resource/content/1/coai.json"
 
 function randomDate() {
   const start = 1683995706000

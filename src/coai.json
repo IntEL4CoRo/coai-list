@@ -83,7 +83,7 @@
     "description": "PyCRAM is a toolbox for designing, implementing and deploying software on autonomous robots.",
     "link": "https://robokudo.ai.uni-bremen.de/index.html#",
     "src_url": "https://github.com/cram2/pycram",
-    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/pycram/binder?urlpath=lab%2Ftree%2Fsrc%2Fpycram%2Fbinder%2Faction_designator.ipynb",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/pycram/xpra?urlpath=lab%2Ftree%2Fexamples%2Faction_designator.ipynb",
     "open_ease": "",
     "asset_url": ""
   },
