@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": ". ./.env && curl -o src/coai.json ${COAIURL} && vite --port 8080 --host=0.0.0.0",
+    "dev": "vite --port 8080 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview"
   },

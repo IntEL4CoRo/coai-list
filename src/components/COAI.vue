@@ -4,9 +4,14 @@ import offlineList from '../coai.json'
 import { ref } from 'vue'
 import axios from 'axios'
 
+const categories = ['Research', 'Innovation', "Competition", "Subsystem"]
 let coaiList = ref([])
-// let jsonUrl = import.meta.env.COAIURL
-let jsonUrl = "https://moodle.intel4coro.de/pluginfile.php/223/mod_resource/content/1/coai.json"
+let jsonUrl = getUrlParamVal('coai') || "https://moodle.intel4coro.de/pluginfile.php/223/mod_resource/content/1/coai.json"
+
+function getUrlParamVal(key) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(key)
+}
 
 function randomDate() {
   const start = 1683995706000
@@ -26,10 +31,11 @@ function dataValidate(data) {
       open_ease: '',
       run_url: '',
       asset_url: '',
+      category: '',
       author: 'unknown',
       created_time: randomDate(),
       options: {},
-      notebooks: [],
+      notebooks: {},
       ...e
     }
     _obj.options = {
@@ -60,14 +66,19 @@ axios.get(jsonUrl).then(response => {
 })
 
 </script>
-
 <template>
   <div class="coai-list">
-    <COAITile v-for="(item, index) in coaiList" :item="item" :index="index" />
+    <div v-for="cate in categories">
+      <h3 class="subtitle">{{cate}}</h3>
+      <COAITile v-for="(item, index) in coaiList.filter(item => item.category == cate)" :item="item" :index="index" />
+    </div>
   </div>
 </template>
 
 <style scoped>
+.subtitle {
+  margin: 2.5rem 0 1rem 0;
+}
 .coai-list {
   max-width: 1280px;
   margin: 0 auto;

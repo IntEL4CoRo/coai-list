@@ -30,66 +30,71 @@ const envOpts = computed(() => {
 })
 
 const robOpts = computed(() => {
-  if (hasNoOptions()) return props.item.options.robots
-  let _selectedEnv = selectedEnv.value
-  let _filterNotebooks = props.item.notebooks.filter(v => !!~v.indexOf(_selectedEnv.value))
-  let filteredList = props.item.options.robots.filter(v => {
-    for (let i of _filterNotebooks) {
-      if (!!~i.indexOf(v.value)) return true
-    }
-    return false
-  })
-  if (!~filteredList.indexOf(selectedRob.value)) {
-    selectedRob.value = filteredList[0]
-  }
-  return filteredList
+  return props.item.options.robots
 })
 
 const taskOpts = computed(() => {
-  if (hasNoOptions()) return props.item.options.tasks
-  if (!props.item.options.tasks) return []
-  let _selectedEnv = selectedEnv.value
-  let _selectedRob = selectedRob.value
-  let _filterNotebooks = props.item.notebooks.filter(v => !!~v.indexOf(_selectedEnv.value) && !!~v.indexOf(_selectedRob.value))
-  let filteredList = props.item.options.tasks.filter(v => {
-    for (let i of _filterNotebooks) {
-      if (!!~i.indexOf(v.value)) return true
-    }
-    return false
-  })
-  if (!~filteredList.indexOf(selectedTask.value)) {
-    selectedTask.value = filteredList[0]
-  }
-  return filteredList
+  return props.item.options.tasks
 })
 
-function hasNoOptions () {
+const warningMsg = computed(() => {
+  const envMsg = notEmptyRefObj(selectedEnv) ? `in the "${ selectedEnv.value.name }" Enivironment` : ''
+  const robMsg = notEmptyRefObj(selectedRob) ? `for the robot "${selectedRob.value.name}"` : ''
+  const taskMsg = notEmptyRefObj(selectedTask) ? `performing the task "${ selectedTask.value.name }"` : ''
+  return `No executable available ${robMsg} ${taskMsg} ${envMsg}!`
+})
+
+function hasNoOptions() {
   let optsLength = props.item.options.environments.length
     + props.item.options.robots.length
     + props.item.options.tasks.length
-  return optsLength === 0 || /\.ipynb$/.test(props.item.run_url)
+  return optsLength === 0
 }
 
-const composedRunUrl = computed(() => {
-  if (hasNoOptions()) {
-    return props.item.run_url
-  }
-  return `${props.item.run_url}${targetNotebook.value}`
-})
-
 const composedSrcUrl = computed(() => {
-  if (hasNoOptions()) {
+  if (hasNoOptions() || /\.ipynb$/.test(props.item.src_url)) {
     return props.item.src_url
   }
-  return `${props.item.src_url}${targetNotebook.value}`
+  if (targetNotebook.value && typeof targetNotebook.value === 'string') {
+    return `${props.item.src_url}${targetNotebook.value}`
+  }
+  if (targetNotebook.value && targetNotebook.value.src) {
+    return targetNotebook.value.src
+  }
+  return ''
 })
 
-const targetNotebook = computed(() => {
-  let env = selectedEnv && selectedEnv.value ? `${selectedEnv.value.value}` : ''
-  let rob = selectedRob && selectedRob.value ? `_${selectedRob.value.value}` : ''
-  let task = selectedTask && selectedTask.value ? `_${selectedTask.value.value}` : ''
-  return `${env}${rob}${task}.ipynb`
+const composedRunUrl = computed(() => {
+  if (hasNoOptions() || /\.ipynb$/.test(props.item.run_url)) {
+    return props.item.run_url
+  }
+  if (targetNotebook.value && typeof targetNotebook.value === 'string') {
+    return (isAbsoluteUrl(targetNotebook.value)) ? targetNotebook.value : `${props.item.run_url}${targetNotebook.value}`
+  }
+  if (targetNotebook.value && targetNotebook.value.run) {
+    return targetNotebook.value.run
+  }
+  if (targetNotebook.value) {
+  }
+  return ''
 })
+
+function isAbsoluteUrl(url) {
+  return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url) || /^data:/i.test(url);
+}
+
+const targetNotebook = computed(() => {
+  let env = notEmptyRefObj(selectedEnv) ? `${selectedEnv.value.value}` : ''
+  let rob = notEmptyRefObj(selectedRob) ? `_${selectedRob.value.value}` : ''
+  let task = notEmptyRefObj(selectedTask) ? `_${selectedTask.value.value}` : ''
+  let notebookKey = `${env}${rob}${task}`
+  return props.item.notebooks[notebookKey]
+})
+
+function notEmptyRefObj(obj) {
+  return obj && obj.value && Object.keys(obj.value).length !== 0
+
+}
 
 function runCode(event) {
   window.open(event.target.href, '_blank', 'width=1280,height=720');
@@ -102,7 +107,7 @@ function runCode(event) {
   <div class="card row mb-3">
     <div class="row">
       <div class="col-md-3">
-        <img :src="item.cover_img" class="card-img" alt="{{ item.title }}">
+        <img v-if="item.cover_img" :src="item.cover_img" class="card-img" :alt="item.title">
       </div>
       <div class="col-md-9">
         <div class="card-body">
@@ -112,13 +117,14 @@ function runCode(event) {
           <p class="card-text">{{ item.description }}</p>
           <div class="row">
             <div class="options-select row">
-              
-              <Dropdown v-if="envOpts.length !== 0" :options="envOpts"
-                v-model="selectedEnv" optionLabel="name" placeholder="Select an environment" class="col-md-5 mb-3">
+
+              <Dropdown v-if="envOpts.length !== 0" :options="envOpts" v-model="selectedEnv" optionLabel="name"
+                placeholder="Select an environment" class="col-md-5 mb-3">
                 <template #value="slotProps">
                   <div v-if="slotProps.value" class="flex h-100 align-items-center">
                     <img v-if="slotProps.value.img" class="selected-img" :alt="slotProps.value.name"
                       :src="slotProps.value.img" />
+                    <div class="image-missing" v-else></div>
                     <div>{{ slotProps.value.name }}</div>
                   </div>
                   <span v-else>
@@ -129,16 +135,18 @@ function runCode(event) {
                   <div class="flex align-items-center">
                     <img v-if="slotProps.option.img" class="option-img" :alt="slotProps.option.name"
                       :src="slotProps.option.img" />
+                    <div class="image-missing" v-else></div>
                     <div>{{ slotProps.option.name }}</div>
                   </div>
                 </template>
               </Dropdown>
-              <Dropdown v-if="robOpts.length !== 0" :options="robOpts" v-model="selectedRob"
-                optionLabel="name" placeholder="Select an robot" class="col-md-5 mb-3">
+              <Dropdown v-if="robOpts.length !== 0" :options="robOpts" v-model="selectedRob" optionLabel="name"
+                placeholder="Select an robot" class="col-md-5 mb-3">
                 <template #value="slotProps">
                   <div v-if="slotProps.value" class="flex h-100 align-items-center">
                     <img v-if="slotProps.value.img" class="selected-img" :alt="slotProps.value.name"
                       :src="slotProps.value.img" />
+                    <div class="image-missing" v-else></div>
                     <div>{{ slotProps.value.name }}</div>
                   </div>
                   <span v-else>
@@ -149,12 +157,13 @@ function runCode(event) {
                   <div class="flex align-items-center">
                     <img v-if="slotProps.option.img" class="option-img" :alt="slotProps.option.name"
                       :src="slotProps.option.img" />
+                    <div class="image-missing" v-else></div>
                     <div>{{ slotProps.option.name }}</div>
                   </div>
                 </template>
               </Dropdown>
-              <Dropdown v-if="taskOpts.length !== 0" :options="taskOpts" v-model="selectedTask"
-                optionLabel="name" placeholder="Select an task" class="col-md-5 mb-3">
+              <Dropdown v-if="taskOpts.length !== 0" :options="taskOpts" v-model="selectedTask" optionLabel="name"
+                placeholder="Select an task" class="col-md-5 mb-3">
                 <template #value="slotProps">
                   <div v-if="slotProps.value" class="flex h-100 align-items-center">
                     <img v-if="slotProps.value.img" class="selected-img" :alt="slotProps.value.name"
@@ -174,12 +183,16 @@ function runCode(event) {
                 </template>
               </Dropdown>
             </div>
+            <div v-if="!composedRunUrl" class="text-danger">
+              {{ warningMsg }}
+            </div>
             <div class="card-buttons">
-              <a :href="composedRunUrl" @click.prevent="runCode($event)" class="btn btn-primary">Run
+              <a :class="{ disabled: !composedRunUrl }" :href="composedRunUrl" @click.prevent="runCode($event)"
+                class="btn btn-primary">Run
                 Code</a>
               <a :class="{ disabled: !item.open_ease }" :href="item.open_ease" target="_blank"
                 class="btn btn-secondary">Experimental Data</a>
-              <a :class="{ disabled: !item.src_url }" :href="composedSrcUrl" target="_blank"
+              <a :class="{ disabled: !composedSrcUrl }" :href="composedSrcUrl" target="_blank"
                 class="btn btn-secondary">Source
                 Code</a>
               <a :class="{ disabled: !item.asset_url }" :href="item.asset_url" target="_blank"
@@ -241,5 +254,19 @@ function runCode(event) {
   height: 3rem;
   object-fit: contain;
   margin-right: 1rem;
+}
+
+.image-missing {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1rem;
+  background-color: #ebebeb;
+}
+
+@media (max-width: 768px) {
+  .card-img {
+    margin-top: 1rem;
+    height: 60px;
+  }
 }
 </style>

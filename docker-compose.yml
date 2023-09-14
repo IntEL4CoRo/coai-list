@@ -1,11 +1,14 @@
 version: '3'
 services:
   demo-page-dev:
-    image: 'node:latest'
+    image: 'coai:latest'
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
     stdin_open: true
     tty: true
     user: root
-    command: /bin/bash
+    command: npm run dev
     working_dir: /home/node/dev
     ports:
       - 18080:8080
