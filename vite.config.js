@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-  base: '/moodle-sub-pages/',
+  base: '/coai-list/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

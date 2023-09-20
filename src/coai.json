@@ -124,7 +124,7 @@
       ]
     },
     "notebooks": {
-      "apartment_tiago": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/main?urlpath=lab%2Ftree%2Fbinder%2Feurobin-demo.ipynb"
+      "apartment_tiago": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/main-xpra?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Feurobin-demo.ipynb"
     }
   },
   {
@@ -133,8 +133,7 @@
     "description": "Robot Agents that work in a retail store.",
     "link": "https://cram-system.org/",
     "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/",
-    "run_url": "",
-    "base_run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
     "open_ease": "https://data.open-ease.org/",
     "asset_url": "https://ease-crc.org/",
     "category": "Innovation",
@@ -228,7 +227,7 @@
     "description": "PyCRAM is a toolbox for designing, implementing and deploying software on autonomous robots.",
     "link": "https://robokudo.ai.uni-bremen.de/index.html#",
     "src_url": "https://github.com/cram2/pycram",
-    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/pycram/xpra?urlpath=lab%2Ftree%2Fexamples%2Faction_designator.ipynb",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/pycram/binder-xpra?urlpath=lab%2Ftree%2Fexamples%2Faction_designator.ipynb",
     "open_ease": "",
     "category": "Subsystem",
     "asset_url": ""
