@@ -2,8 +2,10 @@
   {
     "title": "Researcher's workbench for Household Robotics",
     "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/picking_up_actions.png",
-    "description": "CRAM(Cognitive Robot Abstract Machine) Workbench.",
-    "link": "https://coai-jrc.de/",
+    "sub_title": "The EASE household challenge is subject of the IEEE spectrum article “It’s (Still) Really Hard for Robots to Autonomously Do Household Chores”",
+    "description": "Household Robotics Workbench.",
+    "description_details": "Every time we think that we’re getting a little bit closer to a household robot, new research comes out showing just how far we have to go. Certainly, we’ve seen lots of progress in specific areas like grasping and semantic understanding and whatnot, but putting it all together into a hardware platform that can actually get stuff done autonomously still seems quite a way off. In a paper presented at ICRA 2021 this month, researchers from the University of Bremen conducted a “Robot Household Marathon Experiment,” where a PR2 robot was tasked with first setting a table for a simple breakfast and then cleaning up afterwards in order to “investigate and evaluate the scalability and the robustness aspects of mobile manipulation.” While this sort of thing kinda seems like something robots should have figured out, it may not surprise you to learn that it’s actually still a significant challenge.",
+    "link": "./#/details/0",
     "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/",
     "open_ease": "https://data.open-ease.org/",
     "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
@@ -15,7 +17,7 @@
         {
           "name": "Household",
           "value": "household",
-          "img": "images/household.png"
+          "img": "/images/household.png"
         },
         {
           "name": "RoboCup Arena",
@@ -24,19 +26,19 @@
         {
           "name": "Apartment",
           "value": "apartment",
-          "img": "images/apartment.png"
+          "img": "/images/apartment.png"
         }
       ],
       "robots": [
         {
           "name": "PR2",
           "value": "pr2",
-          "img": "images/pr2_urdf_white1.png"
+          "img": "/images/pr2_urdf_white1.png"
         },
         {
           "name": "Tiago",
           "value": "tiago",
-          "img": "images/tiago_urdf_white1.png"
+          "img": "/images/tiago_urdf_white1.png"
         },
         {
           "name": "Armar",
@@ -45,7 +47,7 @@
         {
           "name": "Donbot",
           "value": "donbot",
-          "img": "images/donbot_urdf_white1.png"
+          "img": "/images/donbot_urdf_white1.png"
         }
       ],
       "tasks": [
@@ -83,7 +85,57 @@
         "run": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/researcher?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Fpopcorn.ipynb",
         "src": "https://github.com/IntEL4CoRo/cram_teaching/blob/researcher/lectures/demos/popcorn.ipynb"
       }
-    }
+    },
+    "videos": [
+      {
+        "name": "Robot Household Marathon: EASE Generative Models of Everyday Activity",
+        "src": "https://www.youtube.com/embed/pv_n9FQRoZQ?si=RDvzEzecesTVWrq7"
+      }
+    ],
+    "software_components": [
+      {
+        "title": "CRAM",
+        "description": "is a software toolbox for the implementation of autonomous robots.",
+        "image": "https://ai.uni-bremen.de/_media/team/cramlogocropped.png",
+        "link": "https://cram-system.org/",
+        "source_url": "https://github.com/cram2/cram"
+      },
+      {
+        "title": "KnowRob",
+        "description": "is a knowledge processing system for robots.",
+        "image": "https://ai.uni-bremen.de/_media/projects/knowrob.png",
+        "link": "https://www.knowrob.org/",
+        "source_url": "https://github.com/knowrob/knowrob"
+      },
+      {
+        "title": "OpenEASE",
+        "image": "https://ai.uni-bremen.de/_media/team/oe-logo2.png",
+        "description": "is a web-based knowledge service providing robot and human activity data.",
+        "link": "http://www.open-ease.org/",
+        "source_url": "https://github.com/ease-crc/openease"
+      },
+      {
+        "title": "GISKARD",
+        "description": "is a framework for constraint- and optimization-based robot motion and planning control.",
+        "image": "https://ai.uni-bremen.de/_media/team/giskard_logo_tmp.png",
+        "link": "https://github.com/SemRoCo/giskardpy",
+        "source_url": "https://github.com/SemRoCo/giskardpy"
+      },
+      {
+        "title": "ROBOKUDO",
+        "description": "is a perception framework targeted for robot manipulation tasks.",
+        "image": "https://ai.uni-bremen.de/_media/team/rk_logo_v3-300px.png",
+        "link": "https://robokudo.ai.uni-bremen.de/",
+        "source_url": "https://gitlab.informatik.uni-bremen.de/robokudo/robokudo"
+      },
+      {
+        "title": "PyCRAM",
+        "description": "is the Python 3 re-implementation of CRAM. PyCRAM is a toolbox for designing, implementing and deploying software on autonomous robots.",
+        "image": "https://pycram.readthedocs.io/en/latest/_images/pycram_logo.png",
+        "link": "https://pycram.readthedocs.io/en/latest/index.html",
+        "source_url": "https://github.com/cram2/pycram"
+      }
+    ]
   },
   {
     "title": "Knowledge Representation & Reasoning (KR&R)",
@@ -103,7 +155,6 @@
     "cover_img": "https://iris.informatik.uni-bremen.de/images/eurobin.png",
     "description": "TIAGo robot in the IAI Bremen apartment laboratory.",
     "link": "https://www.eurobin-project.eu/",
-    "src_url": "https://github.com/IntEL4CoRo/cram_teaching/blob/main/binder/eurobin-demo.ipynb",
     "open_ease": "",
     "category": "Research",
     "asset_url": "https://ease-crc.org/",
@@ -112,19 +163,22 @@
         {
           "name": "IAI Apartment",
           "value": "apartment",
-          "img": "images/apartment.png"
+          "img": "/images/apartment.png"
         }
       ],
       "robots": [
         {
           "name": "Tiago",
           "value": "tiago",
-          "img": "images/tiago_urdf_white1.png"
+          "img": "/images/tiago_urdf_white1.png"
         }
       ]
     },
     "notebooks": {
-      "apartment_tiago": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/main-xpra?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Feurobin-demo.ipynb"
+      "apartment_tiago": {
+        "run": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/main-xpra?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Feurobin-demo.ipynb",
+        "src": "https://github.com/IntEL4CoRo/cram_teaching/blob/main/binder/eurobin-demo.ipynb"
+      }
     }
   },
   {
@@ -142,7 +196,7 @@
         {
           "name": "Retail",
           "value": "retail",
-          "img": "images/retail.png"
+          "img": "/images/retail.png"
         },
         {
           "name": "Waterfront DM Store",
@@ -153,7 +207,7 @@
         {
           "name": "PR2",
           "value": "pr2",
-          "img": "images/pr2_urdf_white1.png"
+          "img": "/images/pr2_urdf_white1.png"
         },
         {
           "name": "Pepper",
@@ -162,7 +216,7 @@
         {
           "name": "Donbot",
           "value": "donbot",
-          "img": "images/donbot_urdf_white1.png"
+          "img": "/images/donbot_urdf_white1.png"
         }
       ]
     },
@@ -175,7 +229,6 @@
     "title": "Innovator's workbench for Laboratory Environment",
     "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/medical_lab.png",
     "description": "Robot Agents that assist in laboratories.",
-    "link": "https://cram-system.org/",
     "src_url": "",
     "run_url": "",
     "open_ease": "",
@@ -193,7 +246,7 @@
         {
           "name": "Tracebot",
           "value": "tracebot",
-          "img": "images/tracebot_urdf_white1.png"
+          "img": "/images/tracebot_urdf_white1.png"
         }
       ]
     },
@@ -225,7 +278,7 @@
     "title": "PyCRAM",
     "cover_img": "https://github.com/cram2/pycram/raw/dev/doc/images/pycram_logo.png",
     "description": "PyCRAM is a toolbox for designing, implementing and deploying software on autonomous robots.",
-    "link": "https://robokudo.ai.uni-bremen.de/index.html#",
+    "link": "https://pycram.readthedocs.io/en/latest/index.html",
     "src_url": "https://github.com/cram2/pycram",
     "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/pycram/binder-xpra?urlpath=lab%2Ftree%2Fexamples%2Faction_designator.ipynb",
     "open_ease": "",

@@ -1,10 +1,9 @@
 <script setup>
-import COAI from './components/COAI.vue'
 </script>
 
 <template>
   <main>
-    <COAI />
+    <router-view></router-view>
   </main>
 </template>
 
