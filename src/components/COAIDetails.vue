@@ -8,6 +8,8 @@ import InlineMessage from 'primevue/inlinemessage';
 
 import {
   coaiUrl,
+  isYouTubeVideo,
+  isMP4Video,
   dataValidate,
   isAbsoluteUrl,
   isEmptyOject,
@@ -71,7 +73,6 @@ const composedRunUrl = computed(() => {
   return `${info.value.run_url}${targetNotebook.value}`
 })
 
-
 </script>
 <template>
   <div class="details">
@@ -79,14 +80,15 @@ const composedRunUrl = computed(() => {
       <h2 class="mb-4 text-center"> {{ info.title }} </h2>
       <div class="videos text-center">
         <p v-for="video in info.videos">
-          <iframe frameborder="0" allowfullscreen="allowfullscreen" :src="video.src" scrolling="no">
+          <video v-if="isMP4Video(video.src)" :src="video.src" controls></video>
+          <iframe v-if="isYouTubeVideo(video.src)" frameborder="0" allowfullscreen="allowfullscreen" :src="video.src" scrolling="no">
           </iframe>
         </p>
       </div>
 
-      <div class="descriptions">
+      <div class="descriptions text-center">
         <h4 v-if="info.sub_title">{{ info.sub_title }}</h4>
-        <p v-if="info.description_details">{{ info.description_details }}</p>
+        <p>{{ info.description_details || info.description }}</p>
       </div>
       <div class="form text-center">
         <SelectGroup :options="info.options" @update:model-value="newValue => targetNotebookId = newValue" />
@@ -104,7 +106,7 @@ const composedRunUrl = computed(() => {
             class="btn btn-secondary">Assets</a>
         </div>
       </div>
-      <div class="software">
+      <div class="software" v-if="info.software_components.length !== 0">
         <h3 class="mb-3">Software Components</h3>
         <div class="card-group">
           <div class="col-md-6" v-for="software in info.software_components">
@@ -142,7 +144,8 @@ const composedRunUrl = computed(() => {
   margin: 0 auto;
 }
 
-iframe {
+iframe,
+video {
   width: 100%;
   height: 480px;
   max-width: 864px;

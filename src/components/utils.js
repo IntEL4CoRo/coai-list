@@ -19,6 +19,17 @@ export function isNotebookUrl(url) {
   return /\.ipynb$/.test(url)
 }
 
+export function isYouTubeVideo(url) {
+  // Regular expression to match YouTube video URLs
+  const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/i;
+  return youtubeRegex.test(url);
+}
+
+export function isMP4Video(url) {
+  // Regular expression to match native MP4 video URLs
+  const mp4Regex = /\.(mp4|webm)$/i;
+  return mp4Regex.test(url);
+}
 export function notEmptyRefObj(obj) {
   return obj && obj.value && Object.keys(obj.value).length !== 0
 }

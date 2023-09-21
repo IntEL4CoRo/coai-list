@@ -185,12 +185,17 @@
     "title": "Innovator's workbench for Retail Robotics",
     "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/store_mapping.png",
     "description": "Robot Agents that work in a retail store.",
-    "link": "https://cram-system.org/",
     "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/",
     "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
     "open_ease": "https://data.open-ease.org/",
     "asset_url": "https://ease-crc.org/",
     "category": "Innovation",
+    "videos": [
+      {
+        "name": "KR4Retail",
+        "src": "https://ai.uni-bremen.de/wiki/_media/demos/k4r_compact.mp4"
+      }
+    ],
     "options": {
       "environments": [
         {
@@ -223,7 +228,37 @@
     "notebooks": {
       "retail_donbot": "retail_donbot.ipynb",
       "retail_pr2": "retail_pr2.ipynb"
-    }
+    },
+    "software_components": [
+      {
+        "title": "CRAM",
+        "description": "is a software toolbox for the implementation of autonomous robots.",
+        "image": "https://ai.uni-bremen.de/_media/team/cramlogocropped.png",
+        "link": "https://cram-system.org/",
+        "source_url": "https://github.com/cram2/cram"
+      },
+      {
+        "title": "KnowRob",
+        "description": "is a knowledge processing system for robots.",
+        "image": "https://ai.uni-bremen.de/_media/projects/knowrob.png",
+        "link": "https://www.knowrob.org/",
+        "source_url": "https://github.com/knowrob/knowrob"
+      },
+      {
+        "title": "GISKARD",
+        "description": "is a framework for constraint- and optimization-based robot motion and planning control.",
+        "image": "https://ai.uni-bremen.de/_media/team/giskard_logo_tmp.png",
+        "link": "https://github.com/SemRoCo/giskardpy",
+        "source_url": "https://github.com/SemRoCo/giskardpy"
+      },
+      {
+        "title": "ROBOKUDO",
+        "description": "is a perception framework targeted for robot manipulation tasks.",
+        "image": "https://ai.uni-bremen.de/_media/team/rk_logo_v3-300px.png",
+        "link": "https://robokudo.ai.uni-bremen.de/",
+        "source_url": "https://gitlab.informatik.uni-bremen.de/robokudo/robokudo"
+      }
+    ]
   },
   {
     "title": "Innovator's workbench for Laboratory Environment",
@@ -256,7 +291,6 @@
     "title": "Competitor's Arena",
     "cover_img": "",
     "description": "Robocup Arena",
-    "link": "https://www.robocup.de/en/robocup-in-germany/",
     "src_url": "",
     "run_url": "",
     "category": "Competition",
