@@ -17,7 +17,7 @@
         {
           "name": "Household",
           "value": "household",
-          "img": "/images/household.png"
+          "img": "./images/household.png"
         },
         {
           "name": "RoboCup Arena",
@@ -26,19 +26,19 @@
         {
           "name": "Apartment",
           "value": "apartment",
-          "img": "/images/apartment.png"
+          "img": "./images/apartment.png"
         }
       ],
       "robots": [
         {
           "name": "PR2",
           "value": "pr2",
-          "img": "/images/pr2_urdf_white1.png"
+          "img": "./images/pr2_urdf_white1.png"
         },
         {
           "name": "Tiago",
           "value": "tiago",
-          "img": "/images/tiago_urdf_white1.png"
+          "img": "./images/tiago_urdf_white1.png"
         },
         {
           "name": "Armar",
@@ -47,7 +47,7 @@
         {
           "name": "Donbot",
           "value": "donbot",
-          "img": "/images/donbot_urdf_white1.png"
+          "img": "./images/donbot_urdf_white1.png"
         }
       ],
       "tasks": [
@@ -163,14 +163,14 @@
         {
           "name": "IAI Apartment",
           "value": "apartment",
-          "img": "/images/apartment.png"
+          "img": "./images/apartment.png"
         }
       ],
       "robots": [
         {
           "name": "Tiago",
           "value": "tiago",
-          "img": "/images/tiago_urdf_white1.png"
+          "img": "./images/tiago_urdf_white1.png"
         }
       ]
     },
@@ -201,7 +201,7 @@
         {
           "name": "Retail",
           "value": "retail",
-          "img": "/images/retail.png"
+          "img": "./images/retail.png"
         },
         {
           "name": "Waterfront DM Store",
@@ -212,7 +212,7 @@
         {
           "name": "PR2",
           "value": "pr2",
-          "img": "/images/pr2_urdf_white1.png"
+          "img": "./images/pr2_urdf_white1.png"
         },
         {
           "name": "Pepper",
@@ -221,7 +221,7 @@
         {
           "name": "Donbot",
           "value": "donbot",
-          "img": "/images/donbot_urdf_white1.png"
+          "img": "./images/donbot_urdf_white1.png"
         }
       ]
     },
@@ -281,7 +281,7 @@
         {
           "name": "Tracebot",
           "value": "tracebot",
-          "img": "/images/tracebot_urdf_white1.png"
+          "img": "images/tracebot_urdf_white1.png"
         }
       ]
     },

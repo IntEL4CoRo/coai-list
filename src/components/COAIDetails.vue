@@ -188,6 +188,6 @@ video {
 .card-img {
   height: 100%;
   object-fit: contain;
-  padding-left: 1.5rem;
+  padding: 1.5rem;
 }
 </style>
