@@ -94,7 +94,7 @@ const composedRunUrl = computed(() => {
         <SelectGroup :options="info.options" @update:model-value="newValue => targetNotebookId = newValue" />
         <InlineMessage v-if="!composedRunUrl" severity="error">{{ warningMsg }}</InlineMessage>
         <div class="card-buttons">
-          <a :class="{ disabled: !composedRunUrl }" :href="composedRunUrl" @click.prevent="openPopupWindow($event)"
+          <a :class="{ disabled: !composedRunUrl }" :href="composedRunUrl" target="_blank"
             class="btn btn-primary">Run
             Code</a>
           <a :class="{ disabled: !info.open_ease }" :href="info.open_ease" target="_blank"

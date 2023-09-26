@@ -138,12 +138,12 @@
     ]
   },
   {
-    "title": "Knowledge Representation & Reasoning (KR&R)",
-    "cover_img": "https://intel4coro.informatik.uni-bremen.de/pluginfile.php/19/course/overviewfiles/dtkrr_4.png",
-    "description": "Knowledge Representation & Reasoning (KR&R)",
-    "link": "https://www.knowrob.org/",
-    "src_url": "https://github.com/knowrob/knowrob",
-    "run_url": "",
+    "title": "Food Cutting Robots",
+    "cover_img": "https://github.com/Food-Ninja/FoodCutting/raw/main/docs/img/Motivation3.jpg",
+    "description": "This project deals with the problem of teaching robots how to execute unknown tasks in the household domain. The focus of this repository lies on the task of Cutting Food, especially fruits and vegetables.",
+    "link": "https://food-ninja.github.io/FoodCutting/",
+    "src_url": "https://github.com/Food-Ninja/FoodCutting",
+    "run_url": "https://food-ninja.github.io/FoodCutting/Webinterface.html",
     "open_ease": "",
     "category": "Research",
     "asset_url": "",
@@ -176,10 +176,20 @@
     },
     "notebooks": {
       "apartment_tiago": {
-        "run": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/main-xpra?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Feurobin-demo.ipynb",
-        "src": "https://github.com/IntEL4CoRo/cram_teaching/blob/main/binder/eurobin-demo.ipynb"
+        "run": "https://binder.intel4coro.de/v2/gh/Multiverse-Framework/Multiverse-Docker.git/main?urlpath=lab%2Ftree%2Ftutorials%2FGiskard-Tutorial.ipynb",
+        "src": "https://github.com/Multiverse-Framework/Multiverse"
       }
     }
+  },
+  {
+    "title": "Joint Probability Trees",
+    "description": "Joint Probability Trees (short JPTs) are a formalism for learning of and reasoning about joint probability distributions, which is tractable for practical applications. JPTs support both symbolic and subsymbolic variables in a single hybrid model, and they do not rely on prior knowledge about variable dependencies or families of distributions. ",
+    "link": "https://joint-probability-trees.readthedocs.io/en/latest/#",
+    "src_url": "https://github.com/joint-probability-trees/jpt-gui",
+    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/jpt-gui/HEAD?urlpath=",
+    "open_ease": "",
+    "category": "Research",
+    "asset_url": ""
   },
   {
     "title": "Innovator's workbench for Retail Robotics",

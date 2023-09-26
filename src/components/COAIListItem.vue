@@ -3,9 +3,9 @@ import { ref, computed } from 'vue'
 import { 
   isAbsoluteUrl,
   isEmptyOject,
-  isNotebookUrl,
-  openPopupWindow 
+  isNotebookUrl 
 } from './utils.js'
+
 import SelectGroup from './SelectGroup.vue'
 
 const props = defineProps({
@@ -69,7 +69,9 @@ const composedRunUrl = computed(() => {
   <div class="card row mb-3">
     <div class="row">
       <div class="col-md-3">
-        <img v-if="item.cover_img" :src="item.cover_img" class="card-img" :alt="item.title">
+        <a :href="item.link || ('./#/details/' + index)" target="_blank" >
+          <img v-if="item.cover_img" :src="item.cover_img" class="card-img" :alt="item.title">
+        </a>
       </div>
       <div class="col-md-9">
         <div class="card-body">
@@ -81,7 +83,7 @@ const composedRunUrl = computed(() => {
             <SelectGroup :options="item.options" @update:model-value="newValue => targetNotebookId = newValue" />
             <div v-if="!composedRunUrl" class="text-danger">{{ warningMsg }}</div>
             <div class="card-buttons">
-              <a :class="{ disabled: !composedRunUrl }" :href="composedRunUrl" @click.prevent="openPopupWindow($event)"
+              <a :class="{ disabled: !composedRunUrl }" :href="composedRunUrl" target="_blank"
                 class="btn btn-primary">Run
                 Code</a>
               <a :class="{ disabled: !item.open_ease }" :href="item.open_ease" target="_blank"
