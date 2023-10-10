@@ -89,7 +89,7 @@ const optionComposedStr = computed(() => {
 }
 
 .p-dropdown {
-  margin-right: 1rem;
+  width: 100%;
 }
 
 .selected-img,

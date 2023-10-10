@@ -96,16 +96,16 @@
         "name": "Experimental Data",
         "value": "openease",
         "description": "OpenEASE",
-        "url": "https://data.open-ease.org/",
+        "url": "https://data.open-ease.org/QA?neem_id=",
         "options": [
           "environments",
           "robots",
           "tasks"
         ],
         "available": {
-          "environments=household|robots=pr2|tasks=setting_table": "https://data.open-ease.org/QA?neem_id=62d5729bb3869a9a9c942f24",
-          "environments=household|robots=pr2|tasks=popcorn": "https://data.open-ease.org/QA?neem_id=6357fad897fdbc7c4d98ccbc",
-          "environments=apartment|robots=tiago|tasks=setting_table": "https://data.open-ease.org/QA?neem_id=633819942a459501ef4d4209"
+          "environments=household|robots=pr2|tasks=setting_table": "62d5729bb3869a9a9c942f24",
+          "environments=household|robots=pr2|tasks=popcorn": "6357fad897fdbc7c4d98ccbc",
+          "environments=apartment|robots=tiago|tasks=setting_table": "633819942a459501ef4d4209"
         }
       },
       {
@@ -362,14 +362,16 @@
         {
           "name": "IAI Apartment",
           "value": "apartment",
-          "img": "./images/apartment.png"
+          "img": "./images/apartment.png",
+          "knowledge_bases": "https://data.open-ease.org/QA?neem_id=64ccbe76181caf1b5ed3c19c&q=findall([Duration%2C Evt]%2C ( event_interval(Evt%2C Begin%2C End)%2C number(End)%2C Duration is End - Begin )%2C Durations)%2C max_member([MaxDuration%2C LongestEvt]%2C Durations)."
         }
       ],
       "robots": [
         {
           "name": "Tiago",
           "value": "tiago",
-          "img": "./images/tiago_urdf_white1.png"
+          "img": "./images/tiago_urdf_white1.png",
+          "knowledge_bases": "https://data.open-ease.org/QA?neem_id=630614f0ff954448f792b2c3&q=findall([Duration%2C Evt]%2C ( event_interval(Evt%2C Begin%2C End)%2C number(End)%2C Duration is End - Begin )%2C Durations)%2C max_member([MaxDuration%2C LongestEvt]%2C Durations)."
         }
       ]
     },
