@@ -1,20 +1,15 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 import offlineList from '../coai.json'
-import SelectGroup from './SelectGroup.vue'
-import InlineMessage from 'primevue/inlinemessage';
+import ActionForm from './ActionForm.vue'
 
 import {
   coaiUrl,
   isYouTubeVideo,
   isMP4Video,
-  dataValidate,
-  isAbsoluteUrl,
-  isEmptyOject,
-  isNotebookUrl,
-  openPopupWindow
+  dataValidate
 } from './utils.js'
 
 const route = useRoute()
@@ -27,50 +22,6 @@ axios.get(jsonUrl).then(response => {
 }).catch(err => {
   console.log('Can not fetch remote json. Use local dev data!')
   info.value = dataValidate(offlineList)[index]
-})
-
-let targetNotebookId = ref('')
-
-const targetNotebook = computed(() => {
-  return info.value.notebooks[targetNotebookId.value]
-})
-
-const warningMsg = computed(() => {
-  return !targetNotebook.value
-    ? `No available executable notebook!`
-    : undefined
-})
-
-const composedSrcUrl = computed(() => {
-  if (isEmptyOject(info.value.options) || isNotebookUrl(info.value.src_url)) {
-    return info.value.src_url
-  }
-  if (!targetNotebook.value) {
-    return ''
-  }
-  if (typeof targetNotebook.value === 'object') {
-    return targetNotebook.value.src
-  }
-  if (typeof targetNotebook.value === 'string' && isAbsoluteUrl(targetNotebook.value)) {
-    return targetNotebook.value
-  }
-  return `${info.value.src_url}${targetNotebook.value}`
-})
-
-const composedRunUrl = computed(() => {
-  if (isEmptyOject(info.value.options) || isNotebookUrl(info.value.run_url)) {
-    return info.value.run_url
-  }
-  if (!targetNotebook.value) {
-    return ''
-  }
-  if (typeof targetNotebook.value === 'object') {
-    return targetNotebook.value.run
-  }
-  if (typeof targetNotebook.value === 'string' && isAbsoluteUrl(targetNotebook.value)) {
-    return targetNotebook.value
-  }
-  return `${info.value.run_url}${targetNotebook.value}`
 })
 
 </script>
@@ -91,20 +42,10 @@ const composedRunUrl = computed(() => {
         <p>{{ info.description_details || info.description }}</p>
       </div>
       <div class="form text-center">
-        <SelectGroup :options="info.options" @update:model-value="newValue => targetNotebookId = newValue" />
-        <InlineMessage v-if="!composedRunUrl" severity="error">{{ warningMsg }}</InlineMessage>
-        <div class="card-buttons">
-          <a :class="{ disabled: !composedRunUrl }" :href="composedRunUrl" target="_blank"
-            class="btn btn-primary">Run
-            Code</a>
-          <a :class="{ disabled: !info.open_ease }" :href="info.open_ease" target="_blank"
-            class="btn btn-secondary">Experimental Data</a>
-          <a :class="{ disabled: !composedSrcUrl }" :href="composedSrcUrl" target="_blank"
-            class="btn btn-secondary">Source
-            Code</a>
-          <a :class="{ disabled: !info.asset_url }" :href="info.asset_url" target="_blank"
-            class="btn btn-secondary">Assets</a>
-        </div>
+        <ActionForm v-if="info.actions.length !== 0"
+            :actions="info.actions"
+            :urlparams="info.urlparams"
+            :options="info.options"/>
       </div>
       <div class="software" v-if="info.software_components.length !== 0">
         <h3 class="mb-3">Software Components</h3>
@@ -133,7 +74,7 @@ const composedRunUrl = computed(() => {
         </div>
       </div>
     </div>
-    <h2 class="text-center" v-else>Project not found!</h2>
+    <h2 class="text-center" v-else>Page not found!</h2>
   </div>
 </template>
 

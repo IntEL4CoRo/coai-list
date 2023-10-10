@@ -2,14 +2,9 @@
   {
     "title": "Researcher's workbench for Household Robotics",
     "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/picking_up_actions.png",
-    "sub_title": "The EASE household challenge is subject of the IEEE spectrum article “It’s (Still) Really Hard for Robots to Autonomously Do Household Chores”",
+    "sub_title": "The EASE household challenge is subject of the IEEE spectrum article “It's (Still) Really Hard for Robots to Autonomously Do Household Chores”",
     "description": "Household Robotics Workbench.",
-    "description_details": "Every time we think that we’re getting a little bit closer to a household robot, new research comes out showing just how far we have to go. Certainly, we’ve seen lots of progress in specific areas like grasping and semantic understanding and whatnot, but putting it all together into a hardware platform that can actually get stuff done autonomously still seems quite a way off. In a paper presented at ICRA 2021 this month, researchers from the University of Bremen conducted a “Robot Household Marathon Experiment,” where a PR2 robot was tasked with first setting a table for a simple breakfast and then cleaning up afterwards in order to “investigate and evaluate the scalability and the robustness aspects of mobile manipulation.” While this sort of thing kinda seems like something robots should have figured out, it may not surprise you to learn that it’s actually still a significant challenge.",
-    "link": "./#/details/0",
-    "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/",
-    "open_ease": "https://data.open-ease.org/",
-    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
-    "asset_url": "https://coai-jrc.de/virtual-building/",
+    "description_details": "Every time we think that we're getting a little bit closer to a household robot, new research comes out showing just how far we have to go. Certainly, we’ve seen lots of progress in specific areas like grasping and semantic understanding and whatnot, but putting it all together into a hardware platform that can actually get stuff done autonomously still seems quite a way off. In a paper presented at ICRA 2021 this month, researchers from the University of Bremen conducted a “Robot Household Marathon Experiment,” where a PR2 robot was tasked with first setting a table for a simple breakfast and then cleaning up afterwards in order to “investigate and evaluate the scalability and the robustness aspects of mobile manipulation.” While this sort of thing kinda seems like something robots should have figured out, it may not surprise you to learn that it's actually still a significant challenge.",
     "created_time": 1693905934063,
     "category": "Research",
     "options": {
@@ -17,7 +12,9 @@
         {
           "name": "Household",
           "value": "household",
-          "img": "./images/household.png"
+          "img": "./images/household.png",
+          "knowledge_bases": "https://data.open-ease.org/QA?neem_id=64ccc8bc24cdd341ebdb2aa3&q=findall([Duration%2C Evt]%2C ( event_interval(Evt%2C Begin%2C End)%2C number(End)%2C Duration is End - Begin )%2C Durations)%2C max_member([MaxDuration%2C LongestEvt]%2C Durations)."
+
         },
         {
           "name": "RoboCup Arena",
@@ -26,7 +23,8 @@
         {
           "name": "Apartment",
           "value": "apartment",
-          "img": "./images/apartment.png"
+          "img": "./images/apartment.png",
+          "knowledge_bases": "https://data.open-ease.org/QA?neem_id=64ccbe76181caf1b5ed3c19c&q=findall([Duration%2C Evt]%2C ( event_interval(Evt%2C Begin%2C End)%2C number(End)%2C Duration is End - Begin )%2C Durations)%2C max_member([MaxDuration%2C LongestEvt]%2C Durations)."
         }
       ],
       "robots": [
@@ -38,7 +36,8 @@
         {
           "name": "Tiago",
           "value": "tiago",
-          "img": "./images/tiago_urdf_white1.png"
+          "img": "./images/tiago_urdf_white1.png",
+          "knowledge_bases": "https://data.open-ease.org/QA?neem_id=630614f0ff954448f792b2c3&q=findall([Duration%2C Evt]%2C ( event_interval(Evt%2C Begin%2C End)%2C number(End)%2C Duration is End - Begin )%2C Durations)%2C max_member([MaxDuration%2C LongestEvt]%2C Durations)."
         },
         {
           "name": "Armar",
@@ -73,19 +72,53 @@
         }
       ]
     },
-    "notebooks": {
-      "apartment_tiago_setting_table": "apartment_tiago.ipynb",
-      "apartment_pr2_setting_table": "apartment_pr2.ipynb",
-      "household_donbot_assembly": "household_donbot_assembly.ipynb",
-      "household_donbot_setting_table": "household_donbot_setting_table.ipynb",
-      "household_pr2_assembly": "household_pr2_assembly.ipynb",
-      "household_pr2_setting_table": "household_pr2_setting_table.ipynb",
-      "household_tiago_setting_table": "household_tiago_setting_table.ipynb",
-      "household_pr2_popcorn": {
-        "run": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/researcher?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Fpopcorn.ipynb",
-        "src": "https://github.com/IntEL4CoRo/cram_teaching/blob/researcher/lectures/demos/popcorn.ipynb"
+    "actions": [
+      {
+        "name": "Run Code",
+        "value": "run",
+        "description": "Run the code in the Binderhub.",
+        "primary": true,
+        "url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
+        "options": [
+          "environments",
+          "robots",
+          "tasks"
+        ],
+        "available": {
+          "environments=apartment|robots=tiago|tasks=setting_table": "apartment_tiago.ipynb",
+          "environments=apartment|robots=pr2|tasks=setting_table": "apartment_pr2.ipynb",
+          "environments=household|robots=donbot|tasks=setting_table": "household_donbot_setting_table.ipynb",
+          "environments=household|robots=pr2|tasks=setting_table": "household_pr2_setting_table.ipynb",
+          "environments=household|robots=tiago|tasks=setting_table": "household_tiago_setting_table.ipynb"
+        }
+      },
+      {
+        "name": "Experimental Data",
+        "value": "openease",
+        "description": "OpenEASE",
+        "url": "https://data.open-ease.org/",
+        "options": [
+          "environments",
+          "robots",
+          "tasks"
+        ],
+        "available": {
+          "environments=household|robots=pr2|tasks=setting_table": "https://data.open-ease.org/QA?neem_id=62d5729bb3869a9a9c942f24",
+          "environments=household|robots=pr2|tasks=popcorn": "https://data.open-ease.org/QA?neem_id=6357fad897fdbc7c4d98ccbc",
+          "environments=apartment|robots=tiago|tasks=setting_table": "https://data.open-ease.org/QA?neem_id=633819942a459501ef4d4209"
+        }
+      },
+      {
+        "name": "Source Code",
+        "value": "source",
+        "url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/"
+      },
+      {
+        "name": "Assets",
+        "value": "assets",
+        "url": "https://coai-jrc.de/virtual-building/"
       }
-    },
+    ],
     "videos": [
       {
         "name": "Robot Household Marathon: EASE Generative Models of Everyday Activity",
@@ -142,13 +175,179 @@
     "cover_img": "https://github.com/Food-Ninja/FoodCutting/raw/main/docs/img/Motivation3.jpg",
     "description": "This project deals with the problem of teaching robots how to execute unknown tasks in the household domain. The focus of this repository lies on the task of Cutting Food, especially fruits and vegetables.",
     "link": "https://food-ninja.github.io/FoodCutting/",
-    "src_url": "https://github.com/Food-Ninja/FoodCutting",
-    "run_url": "https://food-ninja.github.io/FoodCutting/Webinterface.html",
-    "open_ease": "",
     "category": "Research",
-    "asset_url": "",
-    "options": {},
-    "notebooks": []
+    "urlparams": {
+      "task": [
+        {
+          "name": "CuttingAction",
+          "value": "cut:CuttingAction"
+        },
+        {
+          "name": "Quartering",
+          "value": "cut:Quartering"
+        },
+        {
+          "name": "Julienning",
+          "value": "cut:Julienning"
+        },
+        {
+          "name": "Halving",
+          "value": "cut:Halving"
+        },
+        {
+          "name": "Dicing",
+          "value": "soma:Dicing"
+        },
+        {
+          "name": "Cutting",
+          "value": "soma:Cutting"
+        },
+        {
+          "name": "Slicing",
+          "value": "soma:Slicing"
+        },
+        {
+          "name": "Snipping",
+          "value": "cut:Snipping"
+        },
+        {
+          "name": "Slivering",
+          "value": "cut:Slivering"
+        },
+        {
+          "name": "Julienning",
+          "value": "cut:Julienning"
+        },
+        {
+          "name": "Sawing",
+          "value": "cut:Sawing"
+        },
+        {
+          "name": "Paring",
+          "value": "cut:Paring"
+        },
+        {
+          "name": "Carving",
+          "value": "cut:Carving"
+        },
+        {
+          "name": "Mincing",
+          "value": "cut:Mincing"
+        },
+        {
+          "name": "Cubing",
+          "value": "cut:Cubing"
+        },
+        {
+          "name": "Chopping",
+          "value": "cut:Chopping"
+        }
+      ],
+      "tobject": [
+        {
+          "name": "almond",
+          "value": "obo:FOODON_00003523"
+        },
+        {
+          "name": "cucumber",
+          "value": "obo:FOODON_00003415"
+        },
+        {
+          "name": "strawberry",
+          "value": "obo:FOODON_00003443"
+        },
+        {
+          "name": "coconut",
+          "value": "obo:FOODON_00003449"
+        },
+        {
+          "name": "pineapple",
+          "value": "obo:FOODON_00003459"
+        },
+        {
+          "name": "pumpkin",
+          "value": "obo:FOODON_00003486"
+        },
+        {
+          "name": "pepper",
+          "value": "obo:FOODON_00003520"
+        },
+        {
+          "name": "squash",
+          "value": "obo:FOODON_00003539"
+        },
+        {
+          "name": "lime",
+          "value": "obo:FOODON_00003661"
+        },
+        {
+          "name": "banana",
+          "value": "obo:FOODON_00004183"
+        },
+        {
+          "name": "cherry",
+          "value": "obo:FOODON_03301240"
+        },
+        {
+          "name": "bean",
+          "value": "obo:FOODON_03301403"
+        },
+        {
+          "name": "lemon",
+          "value": "obo:FOODON_03301441"
+        },
+        {
+          "name": "apple",
+          "value": "obo:FOODON_03301710"
+        },
+        {
+          "name": "citron",
+          "value": "obo:FOODON_03306596"
+        },
+        {
+          "name": "kumquat",
+          "value": "obo:FOODON_03306597"
+        },
+        {
+          "name": "orange",
+          "value": "obo:FOODON_03309832"
+        },
+        {
+          "name": "tomato",
+          "value": "obo:FOODON_03309927"
+        },
+        {
+          "name": "olive",
+          "value": "obo:FOODON_03317509"
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "Run query",
+        "value": "query",
+        "primary": true,
+        "url": "https://binder.intel4coro.de/v2/gh/Food-Ninja/FoodCutting.git/HEAD?urlpath=notebooks%2Fnotebooks%2FFoodCuttingQueries.ipynb",
+        "urlparams": [
+          "task",
+          "tobject"
+        ]
+      },
+      {
+        "name": "Run Simulation",
+        "value": "simulation",
+        "primary": true,
+        "urlparams": [
+          "task",
+          "tobject"
+        ]
+      },
+      {
+        "name": "Source Code",
+        "value": "source",
+        "url": "https://github.com/Food-Ninja/FoodCutting"
+      }
+    ]
   },
   {
     "title": "euROBIN Demo",
@@ -174,31 +373,44 @@
         }
       ]
     },
-    "notebooks": {
-      "apartment_tiago": {
-        "run": "https://binder.intel4coro.de/v2/gh/Multiverse-Framework/Multiverse-Docker.git/main?urlpath=lab%2Ftree%2Ftutorials%2FGiskard-Tutorial.ipynb",
-        "src": "https://github.com/Multiverse-Framework/Multiverse"
+    "actions": [
+      {
+        "name": "Run Code",
+        "value": "run",
+        "primary": true,
+        "url": "https://binder.intel4coro.de/v2/gh/Multiverse-Framework/Multiverse-Docker.git/main?urlpath=lab%2Ftree%2Ftutorials%2FGiskard-Tutorial.ipynb"
+      },
+      {
+        "name": "Source Code",
+        "value": "source",
+        "url": "https://github.com/Multiverse-Framework/Multiverse"
       }
-    }
+    ]
   },
   {
     "title": "Joint Probability Trees",
     "description": "Joint Probability Trees (short JPTs) are a formalism for learning of and reasoning about joint probability distributions, which is tractable for practical applications. JPTs support both symbolic and subsymbolic variables in a single hybrid model, and they do not rely on prior knowledge about variable dependencies or families of distributions. ",
     "link": "https://joint-probability-trees.readthedocs.io/en/latest/#",
-    "src_url": "https://github.com/joint-probability-trees/jpt-gui",
-    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/jpt-gui/HEAD?urlpath=",
-    "open_ease": "",
+    "cover_img": "https://joint-probability-trees.readthedocs.io/en/latest/_images/gaussian-jpt.png",
     "category": "Research",
-    "asset_url": ""
+    "actions": [
+      {
+        "name": "Run Code",
+        "value": "run",
+        "primary": true,
+        "url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/jpt-gui/HEAD?urlpath=notebooks%2Fsrc%2Fapp.ipynb%3Fautorun%3Dtrue"
+      },
+      {
+        "name": "Source Code",
+        "value": "source",
+        "url": "https://github.com/joint-probability-trees/"
+      }
+    ]
   },
   {
     "title": "Innovator's workbench for Retail Robotics",
     "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/store_mapping.png",
     "description": "Robot Agents that work in a retail store.",
-    "src_url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/",
-    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
-    "open_ease": "https://data.open-ease.org/",
-    "asset_url": "https://ease-crc.org/",
     "category": "Innovation",
     "videos": [
       {
@@ -235,10 +447,35 @@
         }
       ]
     },
-    "notebooks": {
-      "retail_donbot": "retail_donbot.ipynb",
-      "retail_pr2": "retail_pr2.ipynb"
-    },
+    "actions": [
+      {
+        "name": "Run Code",
+        "value": "run",
+        "primary": true,
+        "url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/COAI/master?urlpath=lab%2Ftree%2Fnotebooks%2F",
+        "options": [
+          "environments",
+          "robots"
+        ],
+        "available": {
+          "environments=retail|robots=donbot": "retail_donbot.ipynb",
+          "environments=retail|robots=pr2": "retail_pr2.ipynb"
+        }
+      },
+      {
+        "name": "Experimental Data",
+        "value": "openease"
+      },
+      {
+        "name": "Source Code",
+        "value": "source",
+        "url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/"
+      },
+      {
+        "name": "Assets",
+        "value": "assets"
+      }
+    ],
     "software_components": [
       {
         "title": "CRAM",
@@ -274,10 +511,6 @@
     "title": "Innovator's workbench for Laboratory Environment",
     "cover_img": "https://iris.informatik.uni-bremen.de/textbook/content/medical_lab.png",
     "description": "Robot Agents that assist in laboratories.",
-    "src_url": "",
-    "run_url": "",
-    "open_ease": "",
-    "asset_url": "",
     "category": "Innovation",
     "options": {
       "environments": [
@@ -295,38 +528,123 @@
         }
       ]
     },
-    "notebooks": []
+    "actions": [
+      {
+        "name": "Run Code",
+        "value": "run",
+        "primary": true,
+        "url": "",
+        "options": [
+          "environments",
+          "robots"
+        ],
+        "available": null
+      },
+      {
+        "name": "Experimental Data",
+        "value": "openease",
+        "url": ""
+      },
+      {
+        "name": "Source Code",
+        "value": "source",
+        "url": ""
+      },
+      {
+        "name": "Assets",
+        "value": "assets",
+        "url": ""
+      }
+    ]
   },
   {
     "title": "Competitor's Arena",
     "cover_img": "",
     "description": "Robocup Arena",
-    "src_url": "",
-    "run_url": "",
     "category": "Competition",
-    "open_ease": "",
-    "asset_url": ""
+    "actions": [
+      {
+        "name": "Run Code",
+        "value": "run",
+        "primary": true,
+        "url": "",
+        "available": null
+      },
+      {
+        "name": "Experimental Data",
+        "value": "openease",
+        "url": ""
+      },
+      {
+        "name": "Source Code",
+        "value": "source",
+        "url": ""
+      },
+      {
+        "name": "Assets",
+        "value": "assets",
+        "url": ""
+      }
+    ]
   },
   {
     "title": "RoboKudo",
     "cover_img": "https://robokudo.ai.uni-bremen.de/_images/rk_logo_v3-1000px.png",
     "description": "Robot Perception Framework.",
     "link": "https://robokudo.ai.uni-bremen.de/index.html#",
-    "src_url": "https://gitlab.informatik.uni-bremen.de/robokudo/robokudo",
-    "run_url": "https://binder.intel4coro.de/v2/git/https%3A%2F%2Fgitlab.informatik.uni-bremen.de%2Fyanxiang%2Frobokudo.git/binderhub",
     "category": "Subsystem",
-    "open_ease": "",
-    "asset_url": ""
+    "actions": [
+      {
+        "name": "Run Code",
+        "value": "run",
+        "primary": true,
+        "url": "https://binder.intel4coro.de/v2/git/https%3A%2F%2Fgitlab.informatik.uni-bremen.de%2Fyanxiang%2Frobokudo.git/binderhub"
+      },
+      {
+        "name": "Experimental Data",
+        "value": "openease",
+        "url": ""
+      },
+      {
+        "name": "Source Code",
+        "value": "source",
+        "url": "https://gitlab.informatik.uni-bremen.de/robokudo/robokudo"
+      },
+      {
+        "name": "Assets",
+        "value": "assets",
+        "url": ""
+      }
+    ]
   },
   {
     "title": "PyCRAM",
     "cover_img": "https://github.com/cram2/pycram/raw/dev/doc/images/pycram_logo.png",
     "description": "PyCRAM is a toolbox for designing, implementing and deploying software on autonomous robots.",
     "link": "https://pycram.readthedocs.io/en/latest/index.html",
-    "src_url": "https://github.com/cram2/pycram",
-    "run_url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/pycram/binder-xpra?urlpath=lab%2Ftree%2Fexamples%2Faction_designator.ipynb",
-    "open_ease": "",
     "category": "Subsystem",
-    "asset_url": ""
+    "actions": [
+      {
+        "name": "Run Code",
+        "value": "run",
+        "primary": true,
+        "url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/pycram/binder-xpra?urlpath=lab%2Ftree%2Fexamples%2Faction_designator.ipynb%3Frobot%3Dpr2%26environment%3Dkitchen"
+      },
+      {
+        "name": "Experimental Data",
+        "value": "openease",
+        "url": ""
+      },
+      {
+        "name": "Source Code",
+        "value": "source",
+        "url": "https://github.com/cram2/pycram"
+      },
+      {
+        "name": "Assets",
+        "value": "assets",
+        "url": ""
+      }
+    ]
   }
 ]

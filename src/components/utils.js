@@ -46,18 +46,12 @@ export function dataValidate(data) {
       cover_img: '',
       description: '',
       description_details: '',
-      link: '',
-      src_url: '',
-      open_ease: '',
-      run_url: '',
-      asset_url: '',
       category: '',
       author: 'unknown',
       created_time: randomDate(),
-      options: {},
-      notebooks: {},
       videos: [],
       software_components: [],
+      actions: [],
       ...e
     }
     return _obj

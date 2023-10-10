@@ -1,12 +1,6 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { 
-  isAbsoluteUrl,
-  isEmptyOject,
-  isNotebookUrl 
-} from './utils.js'
 
-import SelectGroup from './SelectGroup.vue'
+import ActionForm from './ActionForm.vue'
 
 const props = defineProps({
   item: {
@@ -17,50 +11,6 @@ const props = defineProps({
     type: Number,
     required: true
   }
-})
-
-let targetNotebookId = ref('')
-
-const targetNotebook = computed(() => {
-  return props.item.notebooks[targetNotebookId.value]
-})
-
-const warningMsg = computed(() => {
-  return !targetNotebook.value
-   ? `No available executable notebook!`
-   : undefined
-})
-
-const composedSrcUrl = computed(() => {
-  if (isEmptyOject(props.item.options) || isNotebookUrl(props.item.src_url)) {
-    return props.item.src_url
-  }
-  if (!targetNotebook.value) {
-    return ''
-  }
-  if (typeof targetNotebook.value === 'object') {
-    return targetNotebook.value.src
-  }
-  if (typeof targetNotebook.value === 'string' && isAbsoluteUrl(targetNotebook.value)) {
-    return targetNotebook.value
-  }
-  return `${props.item.src_url}${targetNotebook.value}`
-})
-
-const composedRunUrl = computed(() => {
-  if (isEmptyOject(props.item.options) || isNotebookUrl(props.item.run_url)) {
-    return props.item.run_url
-  }
-  if (!targetNotebook.value) {
-    return ''
-  }
-  if (typeof targetNotebook.value === 'object') {
-    return targetNotebook.value.run
-  }
-  if (typeof targetNotebook.value === 'string' && isAbsoluteUrl(targetNotebook.value)) {
-    return targetNotebook.value
-  }
-  return `${props.item.run_url}${targetNotebook.value}`
 })
 
 </script>
@@ -80,20 +30,10 @@ const composedRunUrl = computed(() => {
           </h5>
           <p class="card-text">{{ item.description }}</p>
           <div class="row">
-            <SelectGroup :options="item.options" @update:model-value="newValue => targetNotebookId = newValue" />
-            <div v-if="!composedRunUrl" class="text-danger">{{ warningMsg }}</div>
-            <div class="card-buttons">
-              <a :class="{ disabled: !composedRunUrl }" :href="composedRunUrl" target="_blank"
-                class="btn btn-primary">Run
-                Code</a>
-              <a :class="{ disabled: !item.open_ease }" :href="item.open_ease" target="_blank"
-                class="btn btn-secondary">Experimental Data</a>
-              <a :class="{ disabled: !composedSrcUrl }" :href="composedSrcUrl" target="_blank"
-                class="btn btn-secondary">Source
-                Code</a>
-              <a :class="{ disabled: !item.asset_url }" :href="item.asset_url" target="_blank"
-                class="btn btn-secondary">Assets</a>
-            </div>
+            <ActionForm v-if="item.actions.length !== 0"
+            :actions="item.actions"
+            :urlparams="item.urlparams"
+            :options="item.options"/>
           </div>
         </div>
       </div>
