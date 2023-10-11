@@ -96,13 +96,11 @@ const errorMsgs = computed(() => {
   margin-right: 1rem;
   margin-top: 1rem;
 }
-.error-msg {
-  text-align: left;
-  word-break: break-word;
-  white-space: pre-wrap;
-}
 .error-msg pre {
+  text-align: left;
   margin-bottom: 0;
   color: #F59E0B;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 </style>
