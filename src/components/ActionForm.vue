@@ -1,6 +1,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import SelectGroup from './SelectGroup.vue'
+import Message from 'primevue/message'
+import Button from 'primevue/button';
+import OverlayPanel from 'primevue/overlaypanel';
+
 
 const props = defineProps({
   actions: {
@@ -16,6 +20,11 @@ const props = defineProps({
     required: false
   }
 })
+const op = ref();
+const toggleWarning = (event) => {
+    op.value.toggle(event);
+}
+
 let selectedNotebookId = ref('')
 let selectedUrlparams = ref('')
 
@@ -42,9 +51,14 @@ function composeUrlParams (params) {
   return encodeURIComponent(str)
 }
 
-const warningMsg = computed(() => {
-  let str = ''
-  return str
+const errorMsgs = computed(() => {
+  let _arr = props.actions
+    .filter(act => !getActionUrl(act))
+    .map(act => `"${act.name}"`)
+  let selectionStr = selectedNotebookId.value || selectedUrlparams.value 
+    ? ` for options: \n\n${selectedNotebookId.value.replace(/\|/g, '\n')}${selectedUrlparams.value.replace(/\|/g, '\n')}`
+    : '!'
+  return _arr.length === 0 ? '' : `${ _arr.join(',')} is currently unavailable${selectionStr}`
 })
 
 </script>
@@ -61,8 +75,12 @@ const warningMsg = computed(() => {
         :options="urlparams"
         @update:model-value="newValue => selectedUrlparams = newValue"
       />
-      <div v-show="warningMsg" class="text-danger">{{ warningMsg }}</div>
-      
+      <div v-show="errorMsgs.length !== 0">
+        <Button icon="pi pi-bell" severity="warning" text rounded aria-label="Notification" @click="toggleWarning" />
+        <OverlayPanel ref="op" class="error-msg">
+          <pre>{{ errorMsgs }}</pre>
+        </OverlayPanel>
+      </div>
       <a class="btn btn-secondary" target="_blank"
         v-for="action in actions"
         :title="action.description"
@@ -78,5 +96,13 @@ const warningMsg = computed(() => {
   margin-right: 1rem;
   margin-top: 1rem;
 }
-
+.error-msg {
+  text-align: left;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+.error-msg pre {
+  margin-bottom: 0;
+  color: #F59E0B;
+}
 </style>
