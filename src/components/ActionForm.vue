@@ -22,7 +22,7 @@ const props = defineProps({
 })
 const op = ref();
 const toggleWarning = (event) => {
-    op.value.toggle(event);
+  op.value.toggle(event);
 }
 
 let selectedNotebookId = ref('')
@@ -43,11 +43,11 @@ function getActionUrl(action) {
   return _url
 }
 
-function composeUrlParams (params) {
+function composeUrlParams(params) {
   let str = '?&' +
-  params
-    .replace(/\|/g, '"&')
-    .replace(/\=/g, '="') + '"'
+    params
+      .replace(/\|/g, '"&')
+      .replace(/\=/g, '="') + '"'
   return encodeURIComponent(str)
 }
 
@@ -55,40 +55,29 @@ const errorMsgs = computed(() => {
   let _arr = props.actions
     .filter(act => !getActionUrl(act))
     .map(act => `"${act.name}"`)
-  let selectionStr = selectedNotebookId.value || selectedUrlparams.value 
+  let selectionStr = selectedNotebookId.value || selectedUrlparams.value
     ? ` for options: \n\n${selectedNotebookId.value.replace(/\|/g, '\n')}${selectedUrlparams.value.replace(/\|/g, '\n')}`
     : '!'
-  return _arr.length === 0 ? '' : `${ _arr.join(',')} is currently unavailable${selectionStr}`
+  return _arr.length === 0 ? '' : `${_arr.join(',')} is currently unavailable${selectionStr}`
 })
 
 </script>
 
 <template>
-    <div class="card-buttons">
-      <SelectGroup
-        v-if="options"
-        :options="options"
-        @update:model-value="newValue => selectedNotebookId = newValue"
-      />
-      <SelectGroup
-        v-if="urlparams"
-        :options="urlparams"
-        @update:model-value="newValue => selectedUrlparams = newValue"
-      />
-      <div v-show="errorMsgs.length !== 0">
-        <Button icon="pi pi-bell" severity="warning" text rounded aria-label="Notification" @click="toggleWarning" />
-        <OverlayPanel ref="op" class="error-msg">
-          <pre>{{ errorMsgs }}</pre>
-        </OverlayPanel>
-      </div>
-      <a class="btn btn-secondary" target="_blank"
-        v-for="action in actions"
-        :title="action.description"
-        :href="getActionUrl(action)"
-        :class="{ 'btn-primary': action.primary, 'disabled': !getActionUrl(action) }">
-        {{ action.name }}
-      </a>
+  <div class="card-buttons">
+    <SelectGroup v-if="options" :options="options" @update:model-value="newValue => selectedNotebookId = newValue" />
+    <SelectGroup v-if="urlparams" :options="urlparams" @update:model-value="newValue => selectedUrlparams = newValue" />
+    <div v-show="errorMsgs.length !== 0">
+      <Button icon="pi pi-bell" severity="warning" text rounded aria-label="Notification" @click="toggleWarning" />
+      <OverlayPanel ref="op" class="error-msg">
+        <pre>{{ errorMsgs }}</pre>
+      </OverlayPanel>
     </div>
+    <a class="btn btn-secondary" target="_blank" v-for="action in actions" :title="action.description"
+      :href="getActionUrl(action)" :class="{ 'btn-primary': action.primary, 'disabled': !getActionUrl(action) }">
+      {{ action.name }}
+    </a>
+  </div>
 </template>
 
 <style scoped>
@@ -96,6 +85,15 @@ const errorMsgs = computed(() => {
   margin-right: 1rem;
   margin-top: 1rem;
 }
+
+@media (max-width: 768px) {
+  .card-buttons .btn {
+    margin-right: 0;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}
+
 .error-msg pre {
   text-align: left;
   margin-bottom: 0;
