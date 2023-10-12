@@ -112,8 +112,7 @@
       {
         "name": "Source Code",
         "value": "source",
-        "description": "View source code on Github.",
-        "url": "https://github.com/IntEL4CoRo/COAI/blob/master/notebooks/"
+        "url": "./#/details/0"
       },
       {
         "name": "Assets",
