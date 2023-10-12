@@ -16,7 +16,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="card row mb-3">
+  <div class="row mb-3 card">
     <div class="row">
       <div class="col-md-3">
         <a :href="item.link || ('./#/details/' + index)" target="_blank" >
@@ -42,10 +42,6 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.card {
-  background-color: rgb(248, 249, 250);
-}
-
 .form-floating {
   width: 48%;
 }

@@ -326,19 +326,25 @@
     },
     "actions": [
       {
-        "name": "Run query",
-        "value": "query",
+        "name": "Run Query",
+        "value": "run_query",
         "primary": true,
-        "url": "https://binder.intel4coro.de/v2/gh/Food-Ninja/FoodCutting.git/HEAD?urlpath=notebooks%2Fnotebooks%2FFoodCuttingQueries.ipynb",
+        "url": "https://food-ninja.github.io/FoodCutting/Webinterface.html"
+      },
+      {
+        "name": "Run Simulation",
+        "value": "simulation",
+        "primary": true,
         "urlparams": [
           "task",
           "tobject"
         ]
       },
       {
-        "name": "Run Simulation",
-        "value": "simulation",
+        "name": "Inspect Knowledge Graph",
+        "value": "inspect_kg",
         "primary": true,
+        "url": "https://binder.intel4coro.de/v2/gh/Food-Ninja/FoodCutting.git/HEAD?urlpath=notebooks%2Fnotebooks%2FFoodCuttingQueries.ipynb",
         "urlparams": [
           "task",
           "tobject"

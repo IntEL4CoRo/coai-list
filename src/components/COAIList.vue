@@ -21,7 +21,7 @@ axios.get(jsonUrl).then(response => {
 </script>
 <template>
   <div class="coai-list">
-    <div class="mb-6" v-for="cate in categories">
+    <div v-for="cate in categories">
       <h3 class="mb-3">{{cate}}</h3>
       <COAIListItem v-for="item in coaiList.filter(item => item.category == cate)" :item="item" :index="coaiList.indexOf(item)" />
     </div>
