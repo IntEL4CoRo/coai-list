@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
-import offlineList from '../coai.json'
+import offlineList from '../../public/coai.json'
 import ActionForm from './ActionForm.vue'
 
 import {

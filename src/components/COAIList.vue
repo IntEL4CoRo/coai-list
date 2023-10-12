@@ -1,6 +1,6 @@
 <script setup>
 import COAIListItem from './COAIListItem.vue'
-import offlineList from '../coai.json'
+import offlineList from '../../public/coai.json'
 import { coaiUrl, dataValidate } from './utils.js'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'

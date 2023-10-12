@@ -408,7 +408,7 @@
         "name": "Run Code",
         "value": "run",
         "primary": true,
-        "url": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/jpt-gui/HEAD?urlpath=notebooks%2Fsrc%2Fapp.ipynb%3Fautorun%3Dtrue"
+        "url": "https://binder.intel4coro.de/v2/gh/MrSkooma/jpt-gui/jupiter-branch?urlpath=notebooks%2Fsrc%2Fjpt_gui%2Fapp.ipynb%3Fautorun%3Dtrue"
       },
       {
         "name": "Source Code",
