@@ -1,4 +1,4 @@
-export const coaiUrl = import.meta.env.COAIURL
+export const coaiUrl = import.meta.env.COAIURL || "https://moodle.intel4coro.de/pluginfile.php/223/mod_resource/content/1/coai.json"
 
 export function randomDate() {
   const start = 1683995706000

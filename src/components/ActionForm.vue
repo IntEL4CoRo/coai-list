@@ -4,6 +4,7 @@ import SelectGroup from './SelectGroup.vue'
 import Button from 'primevue/button';
 import OverlayPanel from 'primevue/overlaypanel';
 
+import { isAbsoluteUrl } from './utils.js'
 
 const props = defineProps({
   actions: {
@@ -33,6 +34,7 @@ function getActionUrl(action) {
   if (action.options && action.available) {
     let _notebookUrl = action.available[selectedNotebookId.value]
     if (!_notebookUrl) return ''
+    if (isAbsoluteUrl(_notebookUrl)) return _notebookUrl
     _url += _notebookUrl
   }
   if (action.urlparams) {
