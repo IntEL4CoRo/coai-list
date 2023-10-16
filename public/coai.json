@@ -91,7 +91,7 @@
           "environments=household|robots=donbot|tasks=setting_table": "household_donbot_setting_table.ipynb",
           "environments=household|robots=pr2|tasks=setting_table": "household_pr2_setting_table.ipynb",
           "environments=household|robots=tiago|tasks=setting_table": "household_tiago_setting_table.ipynb",
-          "environments=household|robots=pr2|tasks=popcorn": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/popcorn?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Fpopcorn.ipynb"
+          "environments=household|robots=pr2|tasks=popcorn": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/legacy?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Fpopcorn.ipynb"
         }
       },
       {
@@ -470,8 +470,8 @@
           "robots"
         ],
         "available": {
-          "environments=retail|robots=donbot": "retail_donbot.ipynb",
-          "environments=retail|robots=pr2": "retail_pr2.ipynb"
+          "environments=retail|robots=donbot": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/legacy?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Fretail.ipynb%3Frobot%3Ddonbot%26environment%3Dretail",
+          "environments=retail|robots=pr2": "https://binder.intel4coro.de/v2/gh/IntEL4CoRo/cram_teaching/legacy?urlpath=lab%2Ftree%2Flectures%2Fdemos%2Fretail.ipynb%3Frobot%3Dpr2%26environment%3Dretail"
         }
       },
       {
