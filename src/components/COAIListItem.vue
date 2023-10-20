@@ -28,7 +28,7 @@ const props = defineProps({
           <h5 class="card-title">
             <a class="font-weight-bold" :href="item.link || ('./#/details/' + index)" target="_blank">{{ item.title }}</a>
           </h5>
-          <p class="card-text">{{ item.description }}</p>
+          <p class="card-text" v-html="item.description"></p>
           <div class="row">
             <ActionForm v-if="item.actions.length !== 0"
             :actions="item.actions"

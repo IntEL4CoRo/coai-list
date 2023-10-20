@@ -62,12 +62,20 @@ const errorMsgs = computed(() => {
   return _arr.length === 0 ? '' : `${_arr.join(',')} is currently unavailable${selectionStr}`
 })
 
+function showDropdown(opts) {
+  let _opts = opts
+  if (!_opts) return false
+  let activeOptions = props.actions.map(v => v.options).concat(props.actions.map(v => v.urlparams))
+  activeOptions = activeOptions.filter(v => v)
+  return activeOptions.length !== 0
+}
+
 </script>
 
 <template>
   <div class="card-buttons">
-    <SelectGroup v-if="options" :options="options" @update:model-value="newValue => selectedNotebookId = newValue" />
-    <SelectGroup v-if="urlparams" :options="urlparams" @update:model-value="newValue => selectedUrlparams = newValue" />
+    <SelectGroup v-if="showDropdown(options)" :options="options" @update:model-value="newValue => selectedNotebookId = newValue" />
+    <SelectGroup v-if="showDropdown(urlparams)" :options="urlparams" @update:model-value="newValue => selectedUrlparams = newValue" />
     <div v-show="errorMsgs.length !== 0">
       <Button icon="pi pi-bell" severity="warning" text rounded aria-label="Notification" @click="toggleWarning" />
       <OverlayPanel ref="op" class="error-msg">

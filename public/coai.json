@@ -175,7 +175,7 @@
   {
     "title": "Food Cutting Robots",
     "cover_img": "https://github.com/Food-Ninja/FoodCutting/raw/main/docs/img/Motivation3.jpg",
-    "description": "This project deals with the problem of teaching robots how to execute unknown tasks in the household domain. The focus of this repository lies on the task of Cutting Food, especially fruits and vegetables.",
+    "description": "This project deals with the problem of teaching robots how to execute unknown tasks in the household domain. The focus of this repository lies on the task of Cutting Food, especially fruits and vegetables.<br>You can <a class=\"link-primary\" target=\"_blank\" href=\"https://food-ninja.github.io/FoodCutting/Webinterface.html\"><b>try out</b></a> the web interface to get an idea on how a robot would parameterise cutting actions.",
     "link": "https://food-ninja.github.io/FoodCutting/",
     "category": "Research",
     "urlparams": {
@@ -326,29 +326,15 @@
     },
     "actions": [
       {
-        "name": "Run Query",
-        "value": "run_query",
-        "primary": true,
-        "url": "https://food-ninja.github.io/FoodCutting/Webinterface.html"
-      },
-      {
         "name": "Run Simulation",
         "value": "simulation",
-        "primary": true,
-        "urlparams": [
-          "task",
-          "tobject"
-        ]
+        "primary": true
       },
       {
         "name": "Inspect Knowledge Graph",
         "value": "inspect_kg",
         "primary": true,
-        "url": "https://binder.intel4coro.de/v2/gh/Food-Ninja/FoodCutting.git/HEAD?urlpath=notebooks%2Fnotebooks%2FFoodCuttingQueries.ipynb",
-        "urlparams": [
-          "task",
-          "tobject"
-        ]
+        "url": "https://binder.intel4coro.de/v2/gh/Food-Ninja/FoodCutting.git/HEAD?urlpath=notebooks%2Fnotebooks%2FFoodCuttingQueries.ipynb"
       },
       {
         "name": "Source Code",
