@@ -39,7 +39,7 @@ axios.get(jsonUrl).then(response => {
 
       <div class="descriptions text-center">
         <h4 v-if="info.sub_title">{{ info.sub_title }}</h4>
-        <p>{{ info.description_details || info.description }}</p>
+        <p v-html="info.description_details || info.description"></p>
       </div>
       <div class="form text-center">
         <ActionForm v-if="info.actions.length !== 0"

@@ -32,7 +32,7 @@
           "name": "PR2",
           "value": "pr2",
           "img": "./images/pr2_urdf_white1.png",
-          "knowledge_bases": "https://data.open-ease.org/QA?q=findall%28%5BDuration%2C%20Evt%5D%2C%0A%20%20%28%20%20event_interval%28Evt%2C%20Begin%2C%20End%29%2C%0A%20%20%20%20%20number%28End%29%2C%0A%20%20%20%20%20Duration%20is%20End%20-%20Begin%0A%20%20%29%2C%0A%20%20Durations%29%2C%0Amax_member%28%5BMaxDuration%2C%20LongestEvt%5D%2C%20Durations%29."
+          "knowledge_bases": "https://data.open-ease.org/QA?neem_id=6526790ced1a1bfc415a1d38&q=findall%28%5BDuration%2C%20Evt%5D%2C%0A%20%20%28%20%20event_interval%28Evt%2C%20Begin%2C%20End%29%2C%0A%20%20%20%20%20number%28End%29%2C%0A%20%20%20%20%20Duration%20is%20End%20-%20Begin%0A%20%20%29%2C%0A%20%20Durations%29%2C%0Amax_member%28%5BMaxDuration%2C%20LongestEvt%5D%2C%20Durations%29"
         },
         {
           "name": "Tiago",
@@ -175,7 +175,7 @@
   {
     "title": "Food Cutting Robots",
     "cover_img": "https://github.com/Food-Ninja/FoodCutting/raw/main/docs/img/Motivation3.jpg",
-    "description": "This project deals with the problem of teaching robots how to execute unknown tasks in the household domain. The focus of this repository lies on the task of Cutting Food, especially fruits and vegetables.<br>You can <a class=\"link-primary\" target=\"_blank\" href=\"https://food-ninja.github.io/FoodCutting/Webinterface.html\"><b>try out</b></a> the web interface to get an idea on how a robot would parameterise cutting actions.",
+    "description": "This project deals with the problem of teaching robots how to execute unknown tasks in the household domain. The focus of this repository lies on the task of Cutting Food, especially fruits and vegetables.<br>You can <a class=\"btn btn-success\" target=\"_blank\" href=\"https://food-ninja.github.io/FoodCutting/Webinterface.html\"><b>try out the web interface</b></a> to get an idea on how a robot would parameterise cutting actions.",
     "link": "https://food-ninja.github.io/FoodCutting/",
     "category": "Research",
     "urlparams": {
@@ -374,7 +374,7 @@
         "name": "Run Code",
         "value": "run",
         "primary": true,
-        "url": "https://binder.intel4coro.de/v2/gh/Multiverse-Framework/Multiverse-Docker.git/main?urlpath=lab%2Ftree%2Ftutorials%2FGiskard-Tutorial.ipynb"
+        "url": "https://binder.intel4coro.de/v2/gh/Multiverse-Framework/Multiverse-Docker.git/main?urlpath=lab%2Ftree%2Ftestbed_demo.jupyterlab-workspace"
       },
       {
         "name": "Source Code",
