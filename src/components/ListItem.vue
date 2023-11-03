@@ -19,14 +19,14 @@ const props = defineProps({
   <div class="row mb-3 card">
     <div class="row">
       <div class="col-md-3">
-        <a :href="item.link || ('./#/details/' + index)" target="_blank" >
+        <a :href="'./#/details/' + index" target="_blank" >
           <img v-if="item.cover_img" :src="item.cover_img" class="card-img" :alt="item.title">
         </a>
       </div>
       <div class="col-md-9">
         <div class="card-body">
           <h5 class="card-title">
-            <a class="font-weight-bold" :href="item.link || ('./#/details/' + index)" target="_blank">{{ item.title }}</a>
+            <a class="font-weight-bold" :href="'./#/details/' + index" target="_blank">{{ item.title }}</a>
           </h5>
           <p class="card-text" v-html="item.description"></p>
           <div class="row">
