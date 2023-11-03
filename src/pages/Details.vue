@@ -3,14 +3,14 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 import offlineList from '../../public/coai.json'
-import ActionForm from './ActionForm.vue'
+import ActionForm from '../components/ActionForm.vue'
 
 import {
   coaiUrl,
   isYouTubeVideo,
   isMP4Video,
   dataValidate
-} from './utils.js'
+} from '../utils.js'
 
 const route = useRoute()
 const jsonUrl = route.query.coai || coaiUrl

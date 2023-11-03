@@ -8,14 +8,16 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import PrimeVue from "primevue/config";
 
 import App from './App.vue'
-import COAIList from './components/COAIList.vue'
-import COAIDetails from './components/COAIDetails.vue'
+import Home from './pages/Home.vue'
+import Details from './pages/Details.vue'
+import Widgets from './pages/Widgets.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
-    { path: '/', name: 'List', component: COAIList },
-    { path: '/details/:id', name: 'Details', component: COAIDetails },
+    { path: '/', name: 'List', component: Home },
+    { path: '/details/:id', name: 'Details', component: Details },
+    { path: '/widgets/:name', name: 'Widgets', component: Widgets },
   ]
 })
 

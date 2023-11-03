@@ -4,7 +4,7 @@ import SelectGroup from './SelectGroup.vue'
 import Button from 'primevue/button';
 import OverlayPanel from 'primevue/overlaypanel';
 
-import { isAbsoluteUrl } from './utils.js'
+import { isAbsoluteUrl } from '../utils.js'
 
 const props = defineProps({
   actions: {

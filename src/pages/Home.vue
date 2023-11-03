@@ -1,7 +1,7 @@
 <script setup>
-import COAIListItem from './COAIListItem.vue'
+import COAIListItem from '../components/ListItem.vue'
 import offlineList from '../../public/coai.json'
-import { coaiUrl, dataValidate } from './utils.js'
+import { coaiUrl, dataValidate } from '../utils.js'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
