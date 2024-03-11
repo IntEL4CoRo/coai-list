@@ -46,6 +46,8 @@ jobs:
         with:
           # Upload dist repository
           path: './dist'
+      - name: Config CNAME
+        run: echo "vib.ai.intel4coro.de" >> ./dist/CNAME
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
